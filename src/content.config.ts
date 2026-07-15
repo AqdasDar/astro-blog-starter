@@ -13,6 +13,7 @@ const films = defineCollection({
 		releaseDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
 		heroImage: z.string().optional(),
+		videoUrl: z.string().optional(),
 	}),
 });
 

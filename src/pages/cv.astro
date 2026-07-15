@@ -1,0 +1,82 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const filmographyData = [
+  { year: 2024, title: 'Le Voyage Intérieur', role: 'Réalisateur, Scénariste' },
+  { year: 2023, title: "L'Aube Silencieuse", role: 'Réalisateur, Scénariste' },
+  { year: 2022, title: 'Écho', role: 'Réalisateur' },
+  { year: 2021, title: 'Première Lumière', role: 'Scénariste' },
+];
+
+const awardsData = [
+  { year: 2023, award: 'Meilleur Court-Métrage', festival: 'Festival du Film Indépendant de Paris' },
+  { year: 2022, award: 'Prix du Public', festival: 'Festival International de Clermont-Ferrand' },
+];
+
+const filmographyHtml = filmographyData.map(item => 
+  `<div class="year">${item.year}</div><div><strong>${item.title}</strong> - <em>${item.role}</em></div>`
+).join('');
+
+const awardsHtml = awardsData.map(item =>
+  `<div class="year">${item.year}</div><div><strong>${item.award}</strong> - <em>${item.festival}</em></div>`
+).join('');
+---
+
+<PageLayout
+	title="CV & Presse"
+	description="Découvrez mon parcours professionnel, ma filmographie et téléchargez mon dossier de presse."
+>
+	<style>
+		.cv-section {
+			margin-bottom: 3rem;
+		}
+		.cv-section h2 {
+			border-bottom: 2px solid rgb(var(--accent));
+			padding-bottom: 0.5rem;
+			margin-bottom: 1.5rem;
+			font-size: 1.8rem;
+		}
+		.cv-grid {
+			display: grid;
+			grid-template-columns: 100px 1fr;
+			gap: 0.5rem 1rem;
+		}
+		.cv-grid .year {
+			font-weight: bold;
+			color: rgb(var(--gray));
+		}
+		.download-button {
+			display: inline-block;
+			padding: 0.75rem 1.5rem;
+			border: 1px solid rgb(var(--accent));
+			background-color: transparent;
+			color: rgb(var(--accent));
+			border-radius: 4px;
+			text-decoration: none;
+			transition: background-color 0.2s ease, color 0.2s ease;
+		}
+		.download-button:hover {
+			background-color: rgb(var(--accent));
+			color: white;
+		}
+	</style>
+
+	<div class="cv-section">
+		<h2>Filmographie</h2>
+		<div class="cv-grid" set:html={filmographyHtml} />
+	</div>
+
+	<div class="cv-section">
+		<h2>Récompenses</h2>
+		<div class="cv-grid" set:html={awardsHtml} />
+	</div>
+
+	<div class="cv-section">
+		<h2>Dossier de Presse</h2>
+		<p>
+			Pour plus d'informations, d'images en haute résolution ou pour toute demande d'interview, veuillez télécharger mon dossier de presse.
+		</p>
+		<a href="/press-kit-hamza-dar.pdf" class="download-button" download>Télécharger le Dossier de Presse</a>
+	</div>
+
+</PageLayout>

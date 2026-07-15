@@ -7,32 +7,51 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'films'>['data'];
 
-const { title, description, releaseDate, updatedDate, heroImage } = Astro.props;
+const { title, description, releaseDate, updatedDate, heroImage, videoUrl } = Astro.props;
 ---
 
 <html lang="fr">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} image={heroImage} />
 		<style>
 			main {
 				width: calc(100% - 2em);
 				max-width: 100%;
 				margin: 0;
 			}
-			.hero-image {
+			.media-container {
 				width: 100%;
+				margin-bottom: 2rem;
 			}
-			.hero-image img {
+			.media-container img {
 				display: block;
 				margin: 0 auto;
 				border-radius: 12px;
 				box-shadow: var(--box-shadow);
+			}
+			.video-responsive {
+				overflow: hidden;
+				padding-bottom: 56.25%;
+				position: relative;
+				height: 0;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+			.video-responsive iframe {
+				left: 0;
+				top: 0;
+				height: 100%;
+				width: 100%;
+				position: absolute;
 			}
 			.prose {
 				width: 720px;
 				max-width: calc(100% - 2em);
 				margin: auto;
 				padding: 1em;
+				color: rgb(var(--gray-dark));
+			}
+			html.dark .prose {
 				color: rgb(var(--gray-dark));
 			}
 			.title {
@@ -58,8 +77,20 @@ const { title, description, releaseDate, updatedDate, heroImage } = Astro.props;
 		<Header />
 		<main>
 			<article>
-				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
+				<div class="media-container">
+					{videoUrl ? (
+						<div class="video-responsive">
+							<iframe
+								src={videoUrl}
+								title="Embedded video"
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen
+							></iframe>
+						</div>
+					) : (
+						heroImage && <img width={1020} height={510} src={heroImage} alt={`Affiche pour ${title}`} />
+					)}
 				</div>
 				<div class="prose">
 					<div class="title">
@@ -68,7 +99,7 @@ const { title, description, releaseDate, updatedDate, heroImage } = Astro.props;
 							{
 								updatedDate && (
 									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
+										Mis à jour le <FormattedDate date={updatedDate} />
 									</div>
 								)
 							}

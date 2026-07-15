@@ -32,12 +32,14 @@ const films = (await getCollection('films')).sort(
 			}
 			li a {
 				text-decoration: none;
-				transition: 0.2s ease;
+				display: block;
+				overflow: hidden;
 			}
 			li img {
 				width: 100%;
 				margin-bottom: 0.5rem;
 				border-radius: 12px;
+				transition: transform 0.3s ease;
 			}
 			.title {
 				margin: 0;
@@ -48,13 +50,14 @@ const films = (await getCollection('films')).sort(
 			.date {
 				margin: 0;
 				color: rgb(var(--gray));
+				transition: color 0.3s ease;
 			}
 			li a:hover .title,
 			li a:hover .date {
 				color: rgb(var(--accent));
 			}
 			li a:hover img {
-				box-shadow: var(--box-shadow);
+				transform: scale(1.05);
 			}
 			@media (max-width: 720px) {
 				li {

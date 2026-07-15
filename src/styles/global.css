@@ -16,6 +16,18 @@
 		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
 		0 16px 32px rgba(var(--gray), 33%);
 }
+
+html.dark {
+	--accent: #2337ff;
+	--accent-dark: #000d8a;
+	--black: 242, 242, 242; /* Inverted from gray-light */
+	--gray: 160, 170, 180; 
+	--gray-light: 34, 41, 57; /* Inverted from gray-dark */
+	--gray-dark: 229, 233, 240; /* Inverted from gray-light */
+	--gray-gradient: rgba(var(--gray-light), 50%), #18181b;
+	background-color: #18181b;
+}
+
 @font-face {
 	font-family: "Atkinson";
 	src: url("/fonts/atkinson-regular.woff") format("woff");
@@ -42,6 +54,7 @@ body {
 	color: rgb(var(--gray-dark));
 	font-size: 20px;
 	line-height: 1.7;
+	transition: color .2s ease-in-out, background-color .2s ease-in-out;
 }
 main {
 	width: 720px;
