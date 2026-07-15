@@ -11,6 +11,9 @@ export default defineConfig({
 	i18n: {
 		defaultLocale: "fr",
 		locales: ["fr", "en"],
+		routing: {
+			prefixDefault: true,
+		},
 	},
 	integrations: [mdx(), sitemap()],
 	adapter: cloudflare({

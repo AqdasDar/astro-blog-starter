@@ -12,6 +12,7 @@ export const ui = {
         'nav.about': 'À Propos',
         'nav.cv': 'CV',
         'nav.contact': 'Contact',
+        'footer.rights': 'Tous droits réservés.',
     },
     en: {
         'nav.home': 'Home',
@@ -19,6 +20,7 @@ export const ui = {
         'nav.about': 'About',
         'nav.cv': 'CV',
         'nav.contact': 'Contact',
+        'footer.rights': 'All rights reserved.',
     },
 }
 
