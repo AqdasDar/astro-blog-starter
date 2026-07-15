@@ -60,4 +60,21 @@ import { SITE_TITLE } from '../consts';
 		text-decoration: none;
 		border-bottom-color: var(--accent);
 	}
+
+	@media (max-width: 720px) {
+		nav {
+			flex-direction: column;
+			gap: 1em;
+			padding: 1em 0;
+		}
+		.internal-links {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 0.5em 1em;
+		}
+		nav a {
+			padding: 0.5em;
+		}
+	}
 </style>

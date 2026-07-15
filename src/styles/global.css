@@ -57,8 +57,7 @@ body {
 	transition: color .2s ease-in-out, background-color .2s ease-in-out;
 }
 main {
-	width: 720px;
-	max-width: calc(100% - 2em);
+	max-width: 720px;
 	margin: auto;
 	padding: 3em 1em;
 }
