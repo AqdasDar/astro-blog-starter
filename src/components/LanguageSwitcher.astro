@@ -1,0 +1,37 @@
+---
+const {url} = Astro;
+
+const path = url.pathname;
+const currentLocale = path.split('/')[1] || 'fr';
+const otherLocale = currentLocale === 'fr' ? 'en' : 'fr';
+const otherPath = path.replace(`/${currentLocale}/`, `/${otherLocale}/`);
+---
+<a href={otherPath} class="language-switcher">
+    {otherLocale.toUpperCase()}
+</a>
+<style>
+    .language-switcher {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        text-decoration: none;
+        border: 1px solid rgb(var(--gray));
+        border-radius: 99px;
+        color: rgb(var(--gray-dark));
+        font-size: 0.9em;
+        font-weight: bold;
+        transition: all 0.2s ease;
+    }
+
+    .language-switcher:hover {
+        background-color: rgba(var(--gray), 0.2);
+        border-color: rgb(var(--black));
+    }
+
+    html.dark .language-switcher {
+        color: rgb(var(--black));
+        border-color: rgb(var(--gray));
+    }
+</style>

@@ -1,0 +1,49 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import {Image} from 'astro:assets';
+import aboutImage from '../assets/blog-placeholder-about.jpg';
+---
+
+<PageLayout
+        title="À Propos"
+        description="Découvrez mon parcours, ma vision artistique et ma passion pour le cinéma."
+>
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Hamza Dar",
+        "url": Astro.url.href,
+        "jobTitle": "Réalisateur",
+        "description": "Réalisateur de courts-métrages passionné par la création d'histoires uniques et la capture de moments d'authenticité."
+    })}/>
+
+    <style>
+        .about-image {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+    </style>
+
+    <Image src={aboutImage} alt="Portrait du réalisateur Hamza Dar" class="about-image"/>
+
+    <h2>Mon Parcours</h2>
+    <p>
+        Depuis mon plus jeune âge, le cinéma a été ma plus grande passion. J'ai commencé à créer mes propres histoires
+        avec une petite caméra, explorant les rues de ma ville natale et transformant le quotidien en récits
+        extraordinaires. Après des études en cinéma, je me suis lancé en tant que réalisateur indépendant pour donner
+        vie à ma vision unique.
+    </p>
+
+    <h2>Ma Vision Artistique</h2>
+    <p>
+        Je crois que le cinéma est un outil puissant pour explorer la condition humaine. Mes films cherchent à capturer
+        des moments d'authenticité, à poser des questions profondes et à susciter l'émotion. Je suis particulièrement
+        attiré par les histoires intimes qui révèlent des vérités universelles, en utilisant une esthétique visuelle
+        soignée pour renforcer le propos.
+    </p>
+    <p>
+        Chaque projet est une nouvelle aventure, une opportunité de collaborer avec des talents divers et de repousser
+        les limites de ma créativité.
+    </p>
+</PageLayout>

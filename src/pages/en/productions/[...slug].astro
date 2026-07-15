@@ -1,0 +1,22 @@
+---
+import {type CollectionEntry, getCollection} from 'astro:content';
+import ProductionPost from '../../../layouts/ProductionPost.astro';
+import {render} from 'astro:content';
+
+export async function getStaticPaths() {
+    const productions = await getCollection('productions');
+    return productions.map((production) => ({
+        params: {slug: production.slug},
+        props: production,
+    }));
+}
+type Props = CollectionEntry<'productions'>;
+
+const production = Astro.props;
+const {Content} = await render(production);
+---
+
+<ProductionPost {...production.data} category="" description="" heroImage="" releaseDate="" title="" updatedDate=""
+                videoUrl="">
+    <Content/>
+</ProductionPost>

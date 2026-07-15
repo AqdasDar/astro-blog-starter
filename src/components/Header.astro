@@ -1,23 +1,30 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import ThemeToggle from './ThemeToggle.astro';
-import { SITE_TITLE } from '../consts';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import {getLangFromUrl, useTranslations} from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <header>
 	<nav>
 		<div class="brand">
-			<h2><a href="/">{SITE_TITLE}</a></h2>
+            <a href={`/${lang}/`}>
+                <img src="/logo.jpg" alt="Aesthetic Production Logo" height="40"/>
+            </a>
 		</div>
 		<div class="internal-links">
-			<HeaderLink href="/">Accueil</HeaderLink>
-			<HeaderLink href="/films">Films</HeaderLink>
-			<HeaderLink href="/about">À Propos</HeaderLink>
-			<HeaderLink href="/cv">CV</HeaderLink>
-			<HeaderLink href="/contact">Contact</HeaderLink>
+            <HeaderLink href={`/${lang}/`}>{t('nav.home')}</HeaderLink>
+            <HeaderLink href={`/${lang}/productions/`}>{t('nav.productions')}</HeaderLink>
+            <HeaderLink href={`/${lang}/about/`}>{t('nav.about')}</HeaderLink>
+            <HeaderLink href={`/${lang}/cv/`}>{t('nav.cv')}</HeaderLink>
+            <HeaderLink href={`/${lang}/contact/`}>{t('nav.contact')}</HeaderLink>
 		</div>
-		<div class="theme-toggle-container">
+        <div class="controls">
 			<ThemeToggle />
+            <LanguageSwitcher/>
 		</div>
 	</nav>
 </header>
@@ -37,18 +44,35 @@ import { SITE_TITLE } from '../consts';
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+        gap: 1em;
+        min-height: 70px;
 	}
 	.brand {
-		flex: 1 0 auto;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
+        flex: 0 1 auto;
+    }
+
+    .brand a {
+        display: block;
+        padding: 0;
 	}
 
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
+    .brand img {
+        height: 40px;
+        width: auto;
+        border-radius: 0;
+    }
+
+    .internal-links {
+        flex: 1 1 auto;
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+    }
+
+    .controls {
+        flex: 0 1 auto;
+        display: flex;
+        gap: 0.5em;
 	}
 	nav a {
 		padding: 1em 0.5em;
@@ -61,20 +85,17 @@ import { SITE_TITLE } from '../consts';
 		border-bottom-color: var(--accent);
 	}
 
-	@media (max-width: 720px) {
+    @media (max-width: 768px) {
+        /* Adjusted breakpoint */
 		nav {
 			flex-direction: column;
 			gap: 1em;
 			padding: 1em 0;
 		}
 		.internal-links {
-			display: flex;
+            order: 1; /* Place links below brand and controls */
 			flex-wrap: wrap;
-			justify-content: center;
 			gap: 0.5em 1em;
-		}
-		nav a {
-			padding: 0.5em;
 		}
 	}
 </style>

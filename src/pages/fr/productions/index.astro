@@ -1,0 +1,37 @@
+---
+import {getCollection} from 'astro:content';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ProductionGallery from '../../../components/ProductionGallery.astro';
+import FilterControls from '../../../components/FilterControls.astro';
+import {SITE_TITLE} from '../../../consts';
+
+const productions = (await getCollection('productions')).sort(
+    (a, b) => b.data.releaseDate.valueOf() - a.data.releaseDate.valueOf()
+);
+---
+
+<!doctype html>
+<html lang="fr">
+<head>
+    <BaseHead title={`Productions - ${SITE_TITLE}`} description="Découvrez toutes mes productions."/>
+    <style>
+        main {
+            max-width: 960px;
+        }
+    </style>
+    <title></title>
+</head>
+<body>
+<Header/>
+<main>
+    <h1>Mes Productions</h1>
+    <FilterControls client:load/>
+    <section>
+        <ProductionGallery productions={productions}/>
+    </section>
+</main>
+<Footer/>
+</body>
+</html>

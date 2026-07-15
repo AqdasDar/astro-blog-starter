@@ -1,0 +1,82 @@
+---
+// src/pages/en/cv.astro
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const filmography = [
+    {year: 2024, title: 'The Inner Journey', role: 'Director, Writer'},
+    {year: 2023, title: 'The Silent Dawn', role: 'Director, Writer'},
+    {year: 2022, title: 'Echo', role: 'Director'},
+    {year: 2021, title: 'First Light', role: 'Writer'},
+];
+
+const awards = [
+    {year: 2023, award: 'Best Short Film', festival: 'Paris Independent Film Festival'},
+    {year: 2022, award: 'Audience Award', festival: 'Clermont-Ferrand International Short Film Festival'},
+];
+---
+
+<PageLayout
+        title="CV & Press"
+        description="Discover my professional background, my filmography, and download my press kit."
+>
+    <style>
+        .cv-section {
+            margin-bottom: 3rem;
+        }
+
+        .cv-section h2 {
+            border-bottom: 2px solid rgb(var(--accent));
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .cv-grid {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 0.5rem 1rem;
+        }
+
+        .cv-grid .year {
+            font-weight: bold;
+            color: rgb(var(--gray));
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgb(var(--accent));
+            background-color: transparent;
+            color: rgb(var(--accent));
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .download-button:hover {
+            background-color: rgb(var(--accent));
+            color: white;
+        }
+    </style>
+
+    <div class="cv-section">
+        <h2>Filmography</h2>
+        <div class="cv-grid"
+             set:html={filmography.map(item => `<div class="year">${item.year}</div><div><strong>${item.title}</strong> - <em>${item.role}</em></div>`).join('')}/>
+    </div>
+
+    <div class="cv-section">
+        <h2>Awards</h2>
+        <div class="cv-grid"
+             set:html={awards.map(item => `<div class="year">${item.year}</div><div><strong>${item.award}</strong> - <em>${item.festival}</em></div>`).join('')}/>
+    </div>
+
+    <div class="cv-section">
+        <h2>Press Kit</h2>
+        <p>
+            For more information, high-resolution images, or any interview requests, please download my press kit.
+        </p>
+        <a href="/press-kit-hamza-dar.pdf" class="download-button" download>Download Press Kit</a>
+    </div>
+
+</PageLayout>
