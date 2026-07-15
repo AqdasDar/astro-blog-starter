@@ -8,6 +8,11 @@ interface Props {
 }
 
 const {productions} = Astro.props;
+
+function getProductionUrl(production: CollectionEntry<'productions'>) {
+    const [lang, ...slugParts] = production.id.split('/');
+    return `/${lang}/productions/${slugParts.join('/')}/`;
+}
 ---
 <ul class="production-gallery">
     {
@@ -17,7 +22,7 @@ const {productions} = Astro.props;
                         style={`transition-delay: ${index * 100}ms;`}
                         data-category={production.data.category}
                 >
-                    <a href={`/productions/${production.slug}/`}>
+                    <a href={getProductionUrl(production)}>
                         {production.data.heroImage && (
                                 <Image
                                         src={production.data.heroImage}

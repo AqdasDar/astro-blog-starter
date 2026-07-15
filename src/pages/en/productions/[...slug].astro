@@ -5,10 +5,12 @@ import {render} from 'astro:content';
 
 export async function getStaticPaths() {
     const productions = await getCollection('productions');
-    return productions.map((production) => ({
-        params: {slug: production.slug},
-        props: production,
-    }));
+    return productions
+        .filter((production) => production.id.startsWith('en/'))
+        .map((production) => ({
+            params: {slug: production.id.replace(/^en\//, '')},
+            props: production,
+        }));
 }
 type Props = CollectionEntry<'productions'>;
 
@@ -16,7 +18,6 @@ const production = Astro.props;
 const {Content} = await render(production);
 ---
 
-<ProductionPost {...production.data} category="" description="" heroImage="" releaseDate="" title="" updatedDate=""
-                videoUrl="">
+<ProductionPost {...production.data}>
     <Content/>
 </ProductionPost>

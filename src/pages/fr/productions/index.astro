@@ -7,9 +7,11 @@ import ProductionGallery from '../../../components/ProductionGallery.astro';
 import FilterControls from '../../../components/FilterControls.astro';
 import {SITE_TITLE} from '../../../consts';
 
-const productions = (await getCollection('productions')).sort(
-    (a, b) => b.data.releaseDate.valueOf() - a.data.releaseDate.valueOf()
-);
+const productions = (await getCollection('productions'))
+    .filter((p) => p.id.startsWith('fr/'))
+    .sort(
+        (a, b) => b.data.releaseDate.valueOf() - a.data.releaseDate.valueOf()
+    );
 ---
 
 <!doctype html>
@@ -27,7 +29,7 @@ const productions = (await getCollection('productions')).sort(
 <Header/>
 <main>
     <h1>Mes Productions</h1>
-    <FilterControls client:load/>
+    <FilterControls />
     <section>
         <ProductionGallery productions={productions}/>
     </section>

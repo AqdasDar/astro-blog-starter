@@ -6,9 +6,11 @@ import Footer from '../../components/Footer.astro';
 import ProductionGallery from '../../components/ProductionGallery.astro';
 import {SITE_TITLE, SITE_DESCRIPTION} from '../../consts';
 
-const productions = (await getCollection('productions')).sort(
-    (a, b) => b.data.releaseDate.valueOf() - a.data.releaseDate.valueOf()
-);
+const productions = (await getCollection('productions'))
+    .filter((p) => p.id.startsWith('fr/'))
+    .sort(
+        (a, b) => b.data.releaseDate.valueOf() - a.data.releaseDate.valueOf()
+    );
 ---
 
 <!doctype html>
