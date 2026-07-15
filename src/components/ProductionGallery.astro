@@ -29,6 +29,8 @@ function getProductionUrl(production: CollectionEntry<'productions'>) {
                                         widths={[200, 400, 800]}
                                         sizes="(max-width: 720px) 100vw, 50vw"
                                         alt={`Affiche de la production ${production.data.title}`}
+                                        loading={index < 4 ? "eager" : "lazy"}
+                                        fetchpriority={index < 4 ? "high" : undefined}
                                 />
                         )}
                         <h4 class="title">{production.data.title}</h4>
