@@ -1,0 +1,47 @@
+---
+// src/pages/en/about.astro
+import PageLayout from '../../layouts/PageLayout.astro';
+import {Image} from 'astro:assets';
+import aboutImage from '../../assets/blog-placeholder-about.jpg';
+---
+<PageLayout
+        title="About"
+        description="Discover my journey, my artistic vision, and my passion for cinema."
+>
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Hamza Dar",
+        "url": Astro.url.href,
+        "jobTitle": "Filmmaker",
+        "description": "A short film director passionate about creating unique stories and capturing moments of authenticity."
+    })}/>
+
+    <style>
+        .about-image {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+    </style>
+
+    <Image src={aboutImage} alt="Portrait of the director Hamza Dar" class="about-image"/>
+
+    <h2>My Journey</h2>
+    <p>
+        Ever since I was young, cinema has been my greatest passion. I started creating my own stories with a small
+        camera, exploring the streets of my hometown and turning everyday life into extraordinary tales. After studying
+        film, I embarked on a career as an independent director to bring my unique vision to life.
+    </p>
+
+    <h2>My Artistic Vision</h2>
+    <p>
+        I believe that cinema is a powerful tool for exploring the human condition. My films seek to capture moments of
+        authenticity, ask profound questions, and evoke emotion. I am particularly drawn to intimate stories that reveal
+        universal truths, using a refined visual aesthetic to enhance the narrative.
+    </p>
+    <p>
+        Each project is a new adventure, an opportunity to collaborate with diverse talents and push the boundaries of
+        my creativity.
+    </p>
+</PageLayout>

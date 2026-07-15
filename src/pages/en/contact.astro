@@ -1,0 +1,88 @@
+---
+// src/pages/en/contact.astro
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+<PageLayout
+        title="Contact"
+        description="Contact me for any collaboration, question, or just to say hello."
+>
+    <style>
+        .contact-intro {
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+            color: rgb(var(--black));
+        }
+
+        html.dark .form-group input,
+        html.dark .form-group textarea {
+            background-color: rgb(var(--gray-light));
+            border-color: #555;
+            color: rgb(var(--black));
+        }
+
+        .submit-button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            background-color: rgb(var(--accent));
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .contact-details {
+            margin-top: 3rem;
+        }
+    </style>
+
+    <p class="contact-intro">
+        I am always open to new collaboration opportunities and discussions about creative projects. Feel free to
+        contact me using the form below or directly by email.
+    </p>
+
+    <form class="contact-form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required/>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required/>
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="submit-button">Send</button>
+    </form>
+
+    <h3 class="contact-details">Contact Info</h3>
+    <p>
+        <strong>Email:</strong> <a href="mailto:contact@hamzadar.com">contact@hamzadar.com</a>
+    </p>
+    <p>
+        <strong>Social Media:</strong> Follow me on <a href="#" target="_blank">Instagram</a>, <a href="#"
+                                                                                                  target="_blank">Twitter</a>,
+        and <a href="#" target="_blank">Vimeo</a>.
+    </p>
+</PageLayout>

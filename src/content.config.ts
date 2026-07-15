@@ -1,20 +1,19 @@
-import { glob } from "astro/loaders";
-import { defineCollection } from "astro:content";
-import { z } from "astro/zod";
+import {defineCollection, z} from "astro:content";
+import {glob} from "astro/loaders";
 
-const films = defineCollection({
-	// Load Markdown and MDX files in the `src/content/films/` directory.
-	loader: glob({ base: "./src/content/films", pattern: "**/*.{md,mdx}" }),
+const productions = defineCollection({
+	loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/productions" }),
 	// Type-check frontmatter using a schema
-	schema: z.object({
+	schema: ({image}) => z.object({
 		title: z.string(),
 		description: z.string(),
 		// Transform string to Date object
 		releaseDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
-		heroImage: z.string().optional(),
+		heroImage: image().optional(),
 		videoUrl: z.string().optional(),
+		category: z.string().optional(),
 	}),
 });
 
-export const collections = { films };
+export const collections = {productions};

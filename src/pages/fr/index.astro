@@ -1,0 +1,54 @@
+---
+import {getCollection} from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ProductionGallery from '../../components/ProductionGallery.astro';
+import {SITE_TITLE, SITE_DESCRIPTION} from '../../consts';
+
+const productions = (await getCollection('productions'))
+    .filter((p) => p.id.startsWith('fr/'))
+    .sort(
+        (a, b) => b.data.releaseDate.valueOf() - a.data.releaseDate.valueOf()
+    );
+---
+
+<!doctype html>
+<html lang="fr">
+<head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
+    <style>
+        main {
+            max-width: 960px;
+        }
+
+        .intro {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+
+        html.dark .intro {
+            border-bottom-color: rgb(var(--gray-light));
+        }
+    </style>
+    <title></title>
+</head>
+<body>
+<Header/>
+<main>
+    <section class="intro">
+        <h1>Bienvenue sur mon portfolio</h1>
+        <p>
+            Je suis un réalisateur passionné par la création de productions uniques.
+            Découvrez mes dernières œuvres ci-dessous.
+        </p>
+    </section>
+
+    <section>
+        <ProductionGallery productions={productions}/>
+    </section>
+</main>
+<Footer/>
+</body>
+</html>

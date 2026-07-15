@@ -1,0 +1,98 @@
+---
+import type {CollectionEntry} from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+import {Image} from 'astro:assets';
+
+interface Props {
+    productions: CollectionEntry<'productions'>[];
+}
+
+const {productions} = Astro.props;
+
+function getProductionUrl(production: CollectionEntry<'productions'>) {
+    const [lang, ...slugParts] = production.id.split('/');
+    return `/${lang}/productions/${slugParts.join('/')}/`;
+}
+---
+<ul class="production-gallery">
+    {
+        productions.map((production, index) => (
+                <li
+                        class="fade-in-on-scroll"
+                        style={`transition-delay: ${index * 100}ms;`}
+                        data-category={production.data.category}
+                >
+                    <a href={getProductionUrl(production)}>
+                        {production.data.heroImage && (
+                                <Image
+                                        src={production.data.heroImage}
+                                        widths={[200, 400, 800]}
+                                        sizes="(max-width: 720px) 100vw, 50vw"
+                                        alt={`Affiche de la production ${production.data.title}`}
+                                />
+                        )}
+                        <h4 class="title">{production.data.title}</h4>
+                        <p class="date">
+                            <FormattedDate date={production.data.releaseDate}/>
+                        </p>
+                    </a>
+                </li>
+        ))
+    }
+</ul>
+
+<style>
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        width: calc(50% - 1rem);
+    }
+
+    li a {
+        text-decoration: none;
+        display: block;
+        overflow: hidden;
+    }
+
+    li img {
+        width: 100%;
+        margin-bottom: 0.5rem;
+        border-radius: 12px;
+        transition: transform 0.3s ease;
+    }
+
+    .title {
+        margin: 0;
+        font-size: 1.25rem;
+        color: rgb(var(--black));
+        line-height: 1;
+    }
+
+    .date {
+        margin: 0;
+        color: rgb(var(--gray));
+        transition: color 0.3s ease;
+    }
+
+    li a:hover .title,
+    li a:hover .date {
+        color: rgb(var(--accent));
+    }
+
+    li a:hover img {
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 720px) {
+        li {
+            width: 100%;
+        }
+    }
+</style>
