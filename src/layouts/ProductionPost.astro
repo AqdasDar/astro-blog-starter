@@ -12,6 +12,7 @@ type Props = CollectionEntry<'productions'>['data'];
 
 const {title, description, releaseDate, updatedDate, heroImage, videoUrl} = Astro.props;
 const lang = getLangFromUrl(Astro.url);
+const isLocalVideo = videoUrl && (videoUrl.startsWith('/') || videoUrl.endsWith('.mp4') || videoUrl.endsWith('.MP4'));
 ---
 
 <html lang={lang}>
@@ -106,6 +107,14 @@ const lang = getLangFromUrl(Astro.url);
     <article>
         <div class="media-container">
             {videoUrl ? (
+                isLocalVideo ? (
+                    <video
+                        src={videoUrl}
+                        controls
+                        preload="metadata"
+                        style="width: 100%; border-radius: 12px; box-shadow: var(--box-shadow); aspect-ratio: 16/9; background-color: black;"
+                    ></video>
+                ) : (
                     <div class="video-responsive">
                         <iframe
                                 src={videoUrl}
@@ -115,6 +124,7 @@ const lang = getLangFromUrl(Astro.url);
                                 allowfullscreen
                         ></iframe>
                     </div>
+                )
             ) : (
                 heroImage &&
                 <Image src={heroImage} widths={[400, 800, 1200]} sizes="100vw" alt={`Affiche pour ${title}`} loading="eager" fetchpriority="high" />

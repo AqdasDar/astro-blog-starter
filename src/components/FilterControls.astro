@@ -1,20 +1,32 @@
 ---
-const allCategories = ['Court-métrage', 'Documentaire'];
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const allCategories = lang === 'fr' 
+    ? [
+        { id: 'Court-métrage', label: 'Court-métrage' },
+        { id: 'Film institutionnel', label: 'Film institutionnel' }
+      ]
+    : [
+        { id: 'Short Film', label: 'Short Film' },
+        { id: 'Corporate', label: 'Corporate' }
+      ];
 ---
 <div class="filter-controls">
     <div class="filters">
-        <span>Filtrer:</span>
-        <button data-category="all" class="active">Tous</button>
+        <span>{t('filter.label')}</span>
+        <button data-category="all" class="active">{t('filter.all')}</button>
         {allCategories.map(category => (
-                <button data-category={category}>{category}</button>
+                <button data-category={category.id}>{category.label}</button>
         ))}
     </div>
     <div class="sort">
-        <label for="sort-by">Trier par:</label>
+        <label for="sort-by">{t('sort.label')}</label>
         <select id="sort-by">
-            <option value="date-desc">Date (plus récent)</option>
-            <option value="date-asc">Date (plus ancien)</option>
-            <option value="title-asc">Titre (A-Z)</option>
+            <option value="date-desc">{t('sort.dateDesc')}</option>
+            <option value="date-asc">{t('sort.dateAsc')}</option>
+            <option value="title-asc">{t('sort.titleAsc')}</option>
         </select>
     </div>
 </div>

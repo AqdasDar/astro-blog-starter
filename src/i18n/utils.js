@@ -13,6 +13,12 @@ export const ui = {
         'nav.cv': 'CV',
         'nav.contact': 'Contact',
         'footer.rights': 'Tous droits réservés.',
+        'filter.label': 'Filtrer :',
+        'filter.all': 'Tous',
+        'sort.label': 'Trier par :',
+        'sort.dateDesc': 'Date (plus récent)',
+        'sort.dateAsc': 'Date (plus ancien)',
+        'sort.titleAsc': 'Titre (A-Z)',
     },
     en: {
         'nav.home': 'Home',
@@ -21,6 +27,12 @@ export const ui = {
         'nav.cv': 'CV',
         'nav.contact': 'Contact',
         'footer.rights': 'All rights reserved.',
+        'filter.label': 'Filter:',
+        'filter.all': 'All',
+        'sort.label': 'Sort by:',
+        'sort.dateDesc': 'Date (newest)',
+        'sort.dateAsc': 'Date (oldest)',
+        'sort.titleAsc': 'Title (A-Z)',
     },
 }
 
