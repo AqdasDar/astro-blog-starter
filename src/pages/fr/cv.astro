@@ -1,25 +1,27 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 
-const filmographyData = [
-    {year: 2024, title: 'Le Voyage Intérieur', role: 'Réalisateur, Scénariste'},
-    {year: 2023, title: "L'Aube Silencieuse", role: 'Réalisateur, Scénariste'},
-    {year: 2022, title: 'Écho', role: 'Réalisateur'},
-    {year: 2021, title: 'Première Lumière', role: 'Scénariste'},
+const scenaristeRealisation = [
+    { year: 2025, title: 'Trèfle de vie', role: 'court métrage' },
+    { year: 2024, title: 'Une chance pour réussir', role: 'court métrage' },
+    { year: 2023, title: 'Albedo', role: 'court métrage' },
 ];
 
-const awardsData = [
-    {year: 2023, award: 'Meilleur Court-Métrage', festival: 'Festival du Film Indépendant de Paris'},
-    {year: 2022, award: 'Prix du Public', festival: 'Festival International de Clermont-Ferrand'},
+const comedien = [
+    { year: 2025, title: 'Trèfle de vie', role: 'court métrage', details: 'Rôle principal - produit par Aesthetic Production' },
+    { year: 2022, title: 'Echecs & Maths', role: 'court métrage', details: 'Rôle de seikou - produit par IamDESI' },
 ];
 
-const filmographyHtml = filmographyData.map(item =>
-    `<div class="year">${item.year}</div><div><strong>${item.title}</strong> - <em>${item.role}</em></div>`
-).join('');
+const assistantProduction = [
+    { year: 2026, title: 'Vérifions', role: 'Laurence Boccolini' },
+    { year: 2025, title: 'Les Rois du Panier', role: 'Cristina Cordula' },
+    { year: 2025, title: 'Match Aller', role: 'Inès Banzet-Benhagouga' },
+    { year: 2025, title: 'Chair adolescent', role: 'Pablo Cabel' },
+];
 
-const awardsHtml = awardsData.map(item =>
-    `<div class="year">${item.year}</div><div><strong>${item.award}</strong> - <em>${item.festival}</em></div>`
-).join('');
+const diplome = [
+    { year: 2026, title: 'CICM Assistant de Production', role: 'Institut National de l’Audiovisuel' },
+];
 ---
 
 <PageLayout
@@ -49,6 +51,12 @@ const awardsHtml = awardsData.map(item =>
             color: rgb(var(--gray));
         }
 
+        .cv-grid .details {
+            font-size: 0.9rem;
+            color: rgb(var(--gray));
+            margin-top: 0.2rem;
+        }
+
         .download-button {
             display: inline-block;
             padding: 0.75rem 1.5rem;
@@ -67,13 +75,46 @@ const awardsHtml = awardsData.map(item =>
     </style>
 
     <div class="cv-section">
-        <h2>Filmographie</h2>
-        <div class="cv-grid" set:html={filmographyHtml}/>
+        <h2>Scénariste - Réalisation</h2>
+        <div class="cv-grid">
+            {scenaristeRealisation.map(item => (
+                <div class="year">{item.year}</div>
+                <div><strong>{item.title}</strong> - <em>{item.role}</em></div>
+            ))}
+        </div>
     </div>
 
     <div class="cv-section">
-        <h2>Récompenses</h2>
-        <div class="cv-grid" set:html={awardsHtml}/>
+        <h2>Comédien</h2>
+        <div class="cv-grid">
+            {comedien.map(item => (
+                <div class="year">{item.year}</div>
+                <div>
+                    <strong>{item.title}</strong> - <em>{item.role}</em>
+                    {item.details && <div class="details">{item.details}</div>}
+                </div>
+            ))}
+        </div>
+    </div>
+
+    <div class="cv-section">
+        <h2>Assistant de Production</h2>
+        <div class="cv-grid">
+            {assistantProduction.map(item => (
+                <div class="year">{item.year}</div>
+                <div><strong>{item.title}</strong> - <em>{item.role}</em></div>
+            ))}
+        </div>
+    </div>
+
+    <div class="cv-section">
+        <h2>Diplôme</h2>
+        <div class="cv-grid">
+            {diplome.map(item => (
+                <div class="year">{item.year}</div>
+                <div><strong>{item.title}</strong> - <em>{item.role}</em></div>
+            ))}
+        </div>
     </div>
 
     <div class="cv-section">

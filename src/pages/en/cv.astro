@@ -2,16 +2,26 @@
 // src/pages/en/cv.astro
 import PageLayout from '../../layouts/PageLayout.astro';
 
-const filmography = [
-    {year: 2024, title: 'The Inner Journey', role: 'Director, Writer'},
-    {year: 2023, title: 'The Silent Dawn', role: 'Director, Writer'},
-    {year: 2022, title: 'Echo', role: 'Director'},
-    {year: 2021, title: 'First Light', role: 'Writer'},
+const screenplayDirecting = [
+    { year: 2025, title: 'Trèfle de vie', role: 'short film' },
+    { year: 2024, title: 'Une chance pour réussir', role: 'short film' },
+    { year: 2023, title: 'Albedo', role: 'short film' },
 ];
 
-const awards = [
-    {year: 2023, award: 'Best Short Film', festival: 'Paris Independent Film Festival'},
-    {year: 2022, award: 'Audience Award', festival: 'Clermont-Ferrand International Short Film Festival'},
+const acting = [
+    { year: 2025, title: 'Trèfle de vie', role: 'short film', details: 'Lead role - produced by Aesthetic Production' },
+    { year: 2022, title: 'Echecs & Maths', role: 'short film', details: 'Role of Seikou - produced by IamDESI' },
+];
+
+const productionAssistant = [
+    { year: 2026, title: 'Vérifions', role: 'Laurence Boccolini' },
+    { year: 2025, title: 'Les Rois du Panier', role: 'Cristina Cordula' },
+    { year: 2025, title: 'Match Aller', role: 'Inès Banzet-Benhagouga' },
+    { year: 2025, title: 'Chair adolescent', role: 'Pablo Cabel' },
+];
+
+const diploma = [
+    { year: 2026, title: 'CICM Production Assistant', role: 'Institut National de l’Audiovisuel' },
 ];
 ---
 
@@ -42,6 +52,12 @@ const awards = [
             color: rgb(var(--gray));
         }
 
+        .cv-grid .details {
+            font-size: 0.9rem;
+            color: rgb(var(--gray));
+            margin-top: 0.2rem;
+        }
+
         .download-button {
             display: inline-block;
             padding: 0.75rem 1.5rem;
@@ -60,15 +76,46 @@ const awards = [
     </style>
 
     <div class="cv-section">
-        <h2>Filmography</h2>
-        <div class="cv-grid"
-             set:html={filmography.map(item => `<div class="year">${item.year}</div><div><strong>${item.title}</strong> - <em>${item.role}</em></div>`).join('')}/>
+        <h2>Screenplay & Directing</h2>
+        <div class="cv-grid">
+            {screenplayDirecting.map(item => (
+                <div class="year">{item.year}</div>
+                <div><strong>{item.title}</strong> - <em>{item.role}</em></div>
+            ))}
+        </div>
     </div>
 
     <div class="cv-section">
-        <h2>Awards</h2>
-        <div class="cv-grid"
-             set:html={awards.map(item => `<div class="year">${item.year}</div><div><strong>${item.award}</strong> - <em>${item.festival}</em></div>`).join('')}/>
+        <h2>Acting</h2>
+        <div class="cv-grid">
+            {acting.map(item => (
+                <div class="year">{item.year}</div>
+                <div>
+                    <strong>{item.title}</strong> - <em>{item.role}</em>
+                    {item.details && <div class="details">{item.details}</div>}
+                </div>
+            ))}
+        </div>
+    </div>
+
+    <div class="cv-section">
+        <h2>Production Assistant</h2>
+        <div class="cv-grid">
+            {productionAssistant.map(item => (
+                <div class="year">{item.year}</div>
+                <div><strong>{item.title}</strong> - <em>{item.role}</em></div>
+            ))}
+        </div>
+    </div>
+
+    <div class="cv-section">
+        <h2>Diploma</h2>
+        <div class="cv-grid">
+            {diploma.map(item => (
+                <div class="year">{item.year}</div>
+                <div><strong>{item.title}</strong> - <em>{item.role}</em></div>
+            ))}
+        </div>
     </div>
 
     <div class="cv-section">
