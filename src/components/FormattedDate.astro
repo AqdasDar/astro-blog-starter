@@ -13,8 +13,6 @@ const lang = getLangFromUrl(Astro.url);
 	{
 		date.toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', {
 			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
 		})
 	}
 </time>

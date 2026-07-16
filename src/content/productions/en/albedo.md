@@ -1,9 +1,9 @@
 ---
 title: "Albedo"
 description: "A poetic and visual short film exploring light, illusions, and human psychology."
-releaseDate: "2022-01-01"
+releaseDate: "2023-01-01"
 heroImage: "../../../assets/blog-placeholder-3.jpg"
-videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+videoUrl: "https://player.vimeo.com/video/1210560006"
 category: "Short Film"
 ---
 
