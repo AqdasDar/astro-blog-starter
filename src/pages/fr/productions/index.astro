@@ -17,7 +17,7 @@ const productions = (await getCollection('productions'))
 <!doctype html>
 <html lang="fr">
 <head>
-    <BaseHead title={`Productions - ${SITE_TITLE}`} description="Découvrez toutes mes productions."/>
+    <BaseHead title={`Productions - ${SITE_TITLE}`} description="Découvrez l'ensemble des productions d'Aesthetic Production."/>
     <style>
         main {
             max-width: 960px;
@@ -28,7 +28,7 @@ const productions = (await getCollection('productions'))
 <body>
 <Header/>
 <main>
-    <h1>Mes Productions</h1>
+    <h1>Nos Productions</h1>
     <FilterControls />
     <section>
         <ProductionGallery productions={productions}/>
