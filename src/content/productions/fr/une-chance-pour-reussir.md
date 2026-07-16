@@ -1,7 +1,7 @@
 ---
 title: "Une chance pour réussir"
 description: "Un court-métrage dramatique sur le courage, la détermination et le dépassement de soi face aux obstacles."
-releaseDate: "2024-01-01"
+releaseDate: "2025-01-01"
 heroImage: "../../../assets/blog-placeholder-2.jpg"
 category: "Court-métrage"
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Une chance pour réussir"
 description: "A dramatic short film about courage, determination, and overcoming obstacles to achieve one's dreams."
-releaseDate: "2024-01-01"
+releaseDate: "2025-01-01"
 heroImage: "../../../assets/blog-placeholder-2.jpg"
 category: "Short Film"
 ---

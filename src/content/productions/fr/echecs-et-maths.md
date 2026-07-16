@@ -1,7 +1,7 @@
 ---
 title: "Echecs & Maths"
 description: "Un court-métrage produit par IamDESI, racontant les aventures de Seikou."
-releaseDate: "2022-01-01"
+releaseDate: "2024-01-01"
 heroImage: "../../../assets/blog-placeholder-4.jpg"
 category: "Court-métrage"
 ---
