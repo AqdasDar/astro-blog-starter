@@ -2,7 +2,7 @@
 title: "AGEFIPH"
 description: "Un film institutionnel présentant l'entreprise, ses activités et ses engagements."
 releaseDate: "2025-06-01"
-heroImage: "../../../assets/blog-placeholder-about.jpg"
+heroImage: "../../../assets/agefiph.jpg"
 videoUrl: "https://player.vimeo.com/video/1210577758"
 category: "Film institutionnel"
 ---
