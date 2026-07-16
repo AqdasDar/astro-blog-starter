@@ -18,110 +18,280 @@ import aboutImage from '../../assets/blog-placeholder-about.jpg';
     })}/>
 
     <style>
+        .about-hero {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
         .about-image {
             width: 100%;
-            border-radius: 12px;
-            margin-bottom: 2.5rem;
+            height: auto;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 16px;
             box-shadow: var(--box-shadow);
         }
+
+        .intro-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: rgb(var(--gray-dark));
+        }
+
+        .intro-highlight {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0.75rem auto 0 auto;
+            border-radius: 2px;
+        }
+
         .expertise-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin: 2rem 0;
         }
+
         .expertise-card {
-            background: rgba(var(--gray-light), 0.3);
-            padding: 1.5rem;
-            border-radius: 12px;
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
             border: 1px solid rgba(var(--gray-light), 0.8);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 20px rgba(var(--gray), 8%);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
         }
+
         html.dark .expertise-card {
-            background: rgba(var(--gray-light), 0.1);
-            border-color: rgba(var(--gray-light), 0.2);
+            background: rgba(var(--gray-light), 0.03);
+            border-color: rgba(var(--gray-light), 0.1);
+            box-shadow: none;
         }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
         .expertise-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-8px);
             box-shadow: var(--box-shadow);
         }
+
+        .expertise-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(35, 55, 255, 0.08);
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .expertise-card:hover .icon-wrapper {
+            background: var(--accent);
+            color: white;
+        }
+
+        .expertise-icon {
+            width: 24px;
+            height: 24px;
+        }
+
         .expertise-card h3 {
             margin-top: 0;
-            color: var(--accent);
+            margin-bottom: 0.75rem;
             font-size: 1.3rem;
+            color: rgb(var(--black));
         }
+
         .expertise-card p {
             margin: 0;
             font-size: 0.95rem;
-            line-height: 1.5;
+            line-height: 1.6;
         }
+
+        .horizon-section {
+            background: linear-gradient(to right, rgba(var(--gray-light), 0.15), rgba(var(--gray-light), 0.05));
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            border-radius: 0 16px 16px 0;
+            margin: 4rem 0;
+        }
+        
+        html.dark .horizon-section {
+            background: linear-gradient(to right, rgba(var(--gray-light), 0.05), transparent);
+        }
+
+        .horizon-section h2 {
+            font-size: 1.6rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .horizon-section p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .horizon-badge {
+            display: inline-block;
+            background: rgba(35, 55, 255, 0.1);
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
         .contact-cta {
-            margin-top: 3rem;
-            padding: 2.5rem 1.5rem;
-            background: linear-gradient(135deg, var(--accent), rgba(35, 55, 255, 0.8));
+            margin-top: 4rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
             color: white;
             text-align: center;
-            border-radius: 12px;
+            border-radius: 16px;
             box-shadow: var(--box-shadow);
+            position: relative;
+            overflow: hidden;
         }
+
+        .contact-cta::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
         .contact-cta p {
             margin: 0 0 1.5rem 0;
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             font-weight: bold;
             color: white;
         }
+
         .cta-button {
             display: inline-block;
             background: white;
             color: var(--accent);
-            padding: 0.8rem 1.8rem;
+            padding: 0.9rem 2.2rem;
             border-radius: 99px;
             text-decoration: none;
             font-weight: bold;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
         }
+
         .cta-button:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            background: #fdfdfd;
         }
     </style>
 
-    <Image src={aboutImage} alt="Portrait du réalisateur Hamza Dar" class="about-image" loading="eager" fetchpriority="high" />
-
-    <p>
-        Aesthetic Production est marqué par des collaborations avec des figures emblématiques, telles que Cristina Cordula, Laurence Boccolini et Wahid Bouzidi.
-    </p>
-    <p>
-        Ces expériences m'ont permis de développer une expertise technique pointue et une vision artistique que je mets aujourd'hui au service de ma propre structure.
-    </p>
-    <p>
-        Chaque projet est pour moi une nouvelle opportunité de transformer vos idées en récits visuels marquants.
-    </p>
-
-    <h2>Nos Domaines d'Expertise</h2>
-    
-    <div class="expertise-grid">
-        <div class="expertise-card">
-            <h3>Films Institutionnels</h3>
-            <p>Nous créons des vidéos corporate percutantes, pensées pour valoriser votre image de marque et communiquer vos valeurs avec élégance.</p>
-        </div>
-        <div class="expertise-card">
-            <h3>Courts-Métrages</h3>
-            <p>Nous développons et réalisons des récits cinématographiques courts, intenses et visuellement aboutis.</p>
-        </div>
-        <div class="expertise-card">
-            <h3>Production Complète</h3>
-            <p>De la conception initiale à la post-production, nous prenons en charge l'intégralité du processus créatif pour un résultat clé en main de haute qualité.</p>
+    <div class="about-hero">
+        <Image src={aboutImage} alt="Portrait du réalisateur Hamza Dar" class="about-image" loading="eager" fetchpriority="high" />
+        <div class="intro-text">
+            <p class="intro-highlight">
+                Chaque projet représente pour notre équipe une nouvelle opportunité de transformer vos idées en récits visuels marquants.
+            </p>
+            <p>
+                Aesthetic Production est marqué par des collaborations avec des figures emblématiques des médias et du spectacle, telles que Cristina Cordula, Laurence Boccolini et Wahid Bouzidi.
+            </p>
+            <p>
+                Ces expériences enrichissantes ont permis de développer une expertise technique pointue et une vision artistique exigeante, aujourd'hui mises au service du développement de notre structure.
+            </p>
         </div>
     </div>
 
-    <h2>Vers de Nouveaux Horizons : Le Documentaire</h2>
-    <p>
-        Toujours en quête d'authenticité et de nouvelles manières de raconter le monde, notre boîte de production se tourne aujourd'hui vers la réalisation de documentaires. Des projets inédits sont actuellement en cours de développement. 
-    </p>
+    <h2 class="section-title">Nos Domaines d'Expertise</h2>
+    
+    <div class="expertise-grid">
+        <div class="expertise-card">
+            <div class="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="expertise-icon"><path d="M23 7a2 2 0 0 0-2.45-1.45L16 7V5a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2l4.55 1.45A2 2 0 0 0 23 17V7z"/><path d="M6 9h4v6H6z"/></svg>
+            </div>
+            <h3>Films Institutionnels</h3>
+            <p>Nous concevons des films d'entreprise percutants et sur-mesure. Notre objectif : valoriser votre image de marque, transmettre vos messages clés et captiver vos partenaires avec une esthétique moderne et raffinée.</p>
+        </div>
+        <div class="expertise-card">
+            <div class="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="expertise-icon"><path d="m18 8-2.5-3.5H19L21.5 8H18Z"/><path d="m14 8-2.5-3.5H15L17.5 8H14Z"/><path d="m10 8-2.5-3.5H11L13.5 8H10Z"/><path d="m6 8-2.5-3.5H7L9.5 8H6Z"/><path d="M2 8h20v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8Z"/><path d="m8.5 12 5 3-5 3v-6Z"/></svg>
+            </div>
+            <h3>Courts-Métrages</h3>
+            <p>Du scénario à la projection, nous produisons et réalisons des fictions narratives intenses. Nous donnons vie à des histoires originales portées par une vision artistique sans compromis.</p>
+        </div>
+        <div class="expertise-card">
+            <div class="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="expertise-icon"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            </div>
+            <h3>Publicité & Brand Content</h3>
+            <p>Nous créons des contenus de marque dynamiques et mémorables, optimisés pour capter l'attention sur tous les canaux numériques et réseaux sociaux et maximiser l'impact de votre communication.</p>
+        </div>
+        <div class="expertise-card">
+            <div class="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="expertise-icon"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/><path d="M12 6v2"/><path d="M12 16v2"/><path d="M6 12h2"/><path d="M16 12h2"/></svg>
+            </div>
+            <h3>Post-Production</h3>
+            <p>Nous assurons l'intégralité de la chaîne de production : tournage, montage rythmé, étalonnage couleur cinématographique et mixage sonore pour livrer des projets clés en main d'une qualité technique irréprochable.</p>
+        </div>
+    </div>
+
+    <div class="horizon-section">
+        <span class="horizon-badge">Le Documentaire</span>
+        <h2>Vers de Nouveaux Horizons</h2>
+        <p>
+            Toujours en quête d'authenticité et de nouvelles manières de raconter le monde, notre boîte de production se tourne aujourd'hui vers la réalisation de documentaires. Des projets inédits sont actuellement en cours de développement. 
+        </p>
+    </div>
 
     <div class="contact-cta">
         <p>Prêt à écrire votre prochaine histoire ?</p>
-        <a href="/fr/contact/" class="cta-button">Contactez-nous pour échanger sur vos futures productions</a>
+        <a href="/fr/contact/" class="cta-button">Contactez-nous pour échanger sur vos futures productions.</a>
     </div>
 </PageLayout>
