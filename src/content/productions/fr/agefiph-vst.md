@@ -3,7 +3,7 @@ title: "AGEFIPH VST"
 description: "Un film institutionnel présentant l'entreprise, ses activités et ses engagements."
 releaseDate: "2025-06-01"
 heroImage: "../../../assets/blog-placeholder-about.jpg"
-videoUrl: "/videos/agefiph-vst.mp4"
+videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
 category: "Film institutionnel"
 ---
 
