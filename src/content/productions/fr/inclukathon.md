@@ -2,7 +2,7 @@
 title: "IncluKathon"
 description: "Un reportage dynamique couvrant l'événement de hackathon dédié à l'inclusion et à l'emploi des personnes en situation de handicap."
 releaseDate: "2024-11-14"
-heroImage: "../../../assets/blog-placeholder-4.jpg"
+heroImage: "../../../assets/inclukathon.svg"
 videoUrl: "https://player.vimeo.com/video/1210603867"
 category: "Film institutionnel"
 ---
