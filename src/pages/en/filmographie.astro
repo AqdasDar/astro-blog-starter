@@ -26,33 +26,33 @@ const diploma = [
 ---
 
 <PageLayout
-        title="CV & Press"
+        title="Filmography & Press"
         description="Discover my professional background, my filmography, and download my press kit."
 >
     <style>
-        .cv-section {
+        .filmographie-section {
             margin-bottom: 3rem;
         }
 
-        .cv-section h2 {
+        .filmographie-section h2 {
             border-bottom: 2px solid rgb(var(--accent));
             padding-bottom: 0.5rem;
             margin-bottom: 1.5rem;
             font-size: 1.8rem;
         }
 
-        .cv-grid {
+        .filmographie-grid {
             display: grid;
             grid-template-columns: 100px 1fr;
             gap: 0.5rem 1rem;
         }
 
-        .cv-grid .year {
+        .filmographie-grid .year {
             font-weight: bold;
             color: rgb(var(--gray));
         }
 
-        .cv-grid .details {
+        .filmographie-grid .details {
             font-size: 0.9rem;
             color: rgb(var(--gray));
             margin-top: 0.2rem;
@@ -75,9 +75,9 @@ const diploma = [
         }
     </style>
 
-    <div class="cv-section">
+    <div class="filmographie-section">
         <h2>Screenplay & Directing</h2>
-        <div class="cv-grid">
+        <div class="filmographie-grid">
             {screenplayDirecting.map(item => (
                 <div class="year">{item.year}</div>
                 <div><strong>{item.title}</strong> - <em>{item.role}</em></div>
@@ -85,9 +85,9 @@ const diploma = [
         </div>
     </div>
 
-    <div class="cv-section">
+    <div class="filmographie-section">
         <h2>Acting</h2>
-        <div class="cv-grid">
+        <div class="filmographie-grid">
             {acting.map(item => (
                 <div class="year">{item.year}</div>
                 <div>
@@ -98,9 +98,9 @@ const diploma = [
         </div>
     </div>
 
-    <div class="cv-section">
+    <div class="filmographie-section">
         <h2>Production Assistant</h2>
-        <div class="cv-grid">
+        <div class="filmographie-grid">
             {productionAssistant.map(item => (
                 <div class="year">{item.year}</div>
                 <div><strong>{item.title}</strong> - <em>{item.role}</em></div>
@@ -108,9 +108,9 @@ const diploma = [
         </div>
     </div>
 
-    <div class="cv-section">
+    <div class="filmographie-section">
         <h2>Diploma</h2>
-        <div class="cv-grid">
+        <div class="filmographie-grid">
             {diploma.map(item => (
                 <div class="year">{item.year}</div>
                 <div><strong>{item.title}</strong> - <em>{item.role}</em></div>
@@ -118,7 +118,7 @@ const diploma = [
         </div>
     </div>
 
-    <div class="cv-section">
+    <div class="filmographie-section">
         <h2>Press Kit</h2>
         <p>
             For more information, high-resolution images, or any interview requests, please download my press kit.
