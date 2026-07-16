@@ -21,27 +21,107 @@ import aboutImage from '../../assets/blog-placeholder-about.jpg';
         .about-image {
             width: 100%;
             border-radius: 12px;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--box-shadow);
+        }
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .expertise-card {
+            background: rgba(var(--gray-light), 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(var(--gray-light), 0.8);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        html.dark .expertise-card {
+            background: rgba(var(--gray-light), 0.1);
+            border-color: rgba(var(--gray-light), 0.2);
+        }
+        .expertise-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--box-shadow);
+        }
+        .expertise-card h3 {
+            margin-top: 0;
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+        .expertise-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .contact-cta {
+            margin-top: 3rem;
+            padding: 2.5rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent), rgba(35, 55, 255, 0.8));
+            color: white;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+        }
+        .contact-cta p {
+            margin: 0 0 1.5rem 0;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+        }
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--accent);
+            padding: 0.8rem 1.8rem;
+            border-radius: 99px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
     </style>
 
     <Image src={aboutImage} alt="Portrait of the director Hamza Dar" class="about-image" loading="eager" fetchpriority="high" />
 
-    <h2>My Journey</h2>
     <p>
-        Ever since I was young, cinema has been my greatest passion. I started creating my own stories with a small
-        camera, exploring the streets of my hometown and turning everyday life into extraordinary tales. After studying
-        film, I embarked on a career as an independent director to bring my unique vision to life.
+        Aesthetic Production is marked by collaborations with iconic figures, such as Cristina Cordula, Laurence Boccolini, and Wahid Bouzidi.
+    </p>
+    <p>
+        These experiences have allowed me to develop sharp technical expertise and an artistic vision that I put today at the service of my own structure.
+    </p>
+    <p>
+        Each project is for me a new opportunity to transform your ideas into striking visual narratives.
     </p>
 
-    <h2>My Artistic Vision</h2>
+    <h2>Our Areas of Expertise</h2>
+    
+    <div class="expertise-grid">
+        <div class="expertise-card">
+            <h3>Corporate Films</h3>
+            <p>We create impactful corporate videos, designed to enhance your brand image and communicate your values with elegance.</p>
+        </div>
+        <div class="expertise-card">
+            <h3>Short Films</h3>
+            <p>We develop and direct short, intense, and visually accomplished cinematic narratives.</p>
+        </div>
+        <div class="expertise-card">
+            <h3>Full Production</h3>
+            <p>From initial concept to post-production, we handle the entire creative process for a high-quality, turn-key result.</p>
+        </div>
+    </div>
+
+    <h2>Towards New Horizons: The Documentary</h2>
     <p>
-        I believe that cinema is a powerful tool for exploring the human condition. My films seek to capture moments of
-        authenticity, ask profound questions, and evoke emotion. I am particularly drawn to intimate stories that reveal
-        universal truths, using a refined visual aesthetic to enhance the narrative.
+        Always in search of authenticity and new ways of telling stories about the world, our production company is now moving towards directing documentaries. Unique projects are currently under development. 
     </p>
-    <p>
-        Each project is a new adventure, an opportunity to collaborate with diverse talents and push the boundaries of
-        my creativity.
-    </p>
+
+    <div class="contact-cta">
+        <p>Ready to write your next story?</p>
+        <a href="/en/contact/" class="cta-button">Contact us to discuss your future productions</a>
+    </div>
 </PageLayout>

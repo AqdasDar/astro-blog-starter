@@ -2,7 +2,7 @@
 title: "Albedo"
 description: "Un court-métrage poétique et visuel explorant la lumière, les faux-semblants et la psychologie humaine."
 releaseDate: "2023-01-01"
-heroImage: "../../../assets/blog-placeholder-3.jpg"
+heroImage: "../../../assets/albedo.png"
 videoUrl: "https://player.vimeo.com/video/1210560006"
 category: "Court-métrage"
 ---

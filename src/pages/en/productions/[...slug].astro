@@ -6,9 +6,9 @@ import {render} from 'astro:content';
 export async function getStaticPaths() {
     const productions = await getCollection('productions');
     return productions
-        .filter((production) => production.id.startsWith('en/'))
+        .filter((production) => production.slug.startsWith('en/'))
         .map((production) => ({
-            params: {slug: production.id.replace(/^en\//, '')},
+            params: {slug: production.slug.replace(/^en\//, '')},
             props: production,
         }));
 }

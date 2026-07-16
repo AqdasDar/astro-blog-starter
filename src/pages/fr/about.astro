@@ -21,29 +21,107 @@ import aboutImage from '../../assets/blog-placeholder-about.jpg';
         .about-image {
             width: 100%;
             border-radius: 12px;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--box-shadow);
+        }
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .expertise-card {
+            background: rgba(var(--gray-light), 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(var(--gray-light), 0.8);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        html.dark .expertise-card {
+            background: rgba(var(--gray-light), 0.1);
+            border-color: rgba(var(--gray-light), 0.2);
+        }
+        .expertise-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--box-shadow);
+        }
+        .expertise-card h3 {
+            margin-top: 0;
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+        .expertise-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .contact-cta {
+            margin-top: 3rem;
+            padding: 2.5rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent), rgba(35, 55, 255, 0.8));
+            color: white;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+        }
+        .contact-cta p {
+            margin: 0 0 1.5rem 0;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+        }
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--accent);
+            padding: 0.8rem 1.8rem;
+            border-radius: 99px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
     </style>
 
     <Image src={aboutImage} alt="Portrait du réalisateur Hamza Dar" class="about-image" loading="eager" fetchpriority="high" />
 
-    <h2>Mon Parcours</h2>
     <p>
-        Depuis mon plus jeune âge, le cinéma a été ma plus grande passion. J'ai commencé à créer mes propres histoires
-        avec une petite caméra, explorant les rues de ma ville natale et transformant le quotidien en récits
-        extraordinaires. Après des études en cinéma, je me suis lancé en tant que réalisateur indépendant pour donner
-        vie à ma vision unique.
+        Aesthetic Production est marqué par des collaborations avec des figures emblématiques, telles que Cristina Cordula, Laurence Boccolini et Wahid Bouzidi.
+    </p>
+    <p>
+        Ces expériences m'ont permis de développer une expertise technique pointue et une vision artistique que je mets aujourd'hui au service de ma propre structure.
+    </p>
+    <p>
+        Chaque projet est pour moi une nouvelle opportunité de transformer vos idées en récits visuels marquants.
     </p>
 
-    <h2>Ma Vision Artistique</h2>
+    <h2>Nos Domaines d'Expertise</h2>
+    
+    <div class="expertise-grid">
+        <div class="expertise-card">
+            <h3>Films Institutionnels</h3>
+            <p>Nous créons des vidéos corporate percutantes, pensées pour valoriser votre image de marque et communiquer vos valeurs avec élégance.</p>
+        </div>
+        <div class="expertise-card">
+            <h3>Courts-Métrages</h3>
+            <p>Nous développons et réalisons des récits cinématographiques courts, intenses et visuellement aboutis.</p>
+        </div>
+        <div class="expertise-card">
+            <h3>Production Complète</h3>
+            <p>De la conception initiale à la post-production, nous prenons en charge l'intégralité du processus créatif pour un résultat clé en main de haute qualité.</p>
+        </div>
+    </div>
+
+    <h2>Vers de Nouveaux Horizons : Le Documentaire</h2>
     <p>
-        Je crois que le cinéma est un outil puissant pour explorer la condition humaine. Mes films cherchent à capturer
-        des moments d'authenticité, à poser des questions profondes et à susciter l'émotion. Je suis particulièrement
-        attiré par les histoires intimes qui révèlent des vérités universelles, en utilisant une esthétique visuelle
-        soignée pour renforcer le propos.
+        Toujours en quête d'authenticité et de nouvelles manières de raconter le monde, notre boîte de production se tourne aujourd'hui vers la réalisation de documentaires. Des projets inédits sont actuellement en cours de développement. 
     </p>
-    <p>
-        Chaque projet est une nouvelle aventure, une opportunité de collaborer avec des talents divers et de repousser
-        les limites de ma créativité.
-    </p>
+
+    <div class="contact-cta">
+        <p>Prêt à écrire votre prochaine histoire ?</p>
+        <a href="/fr/contact/" class="cta-button">Contactez-nous pour échanger sur vos futures productions</a>
+    </div>
 </PageLayout>

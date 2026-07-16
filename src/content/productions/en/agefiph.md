@@ -2,7 +2,7 @@
 title: "AGEFIPH"
 description: "A corporate film presenting the company, its activities, and its commitments."
 releaseDate: "2025-06-01"
-heroImage: "../../../assets/blog-placeholder-about.jpg"
+heroImage: "../../../assets/agefiph.jpg"
 videoUrl: "https://player.vimeo.com/video/1210577758"
 category: "Corporate"
 ---
