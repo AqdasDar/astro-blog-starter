@@ -2,6 +2,7 @@ import {defineCollection, z} from "astro:content";
 import {glob} from "astro/loaders";
 
 const productions = defineCollection({
+	loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/productions" }),
 	// Type-check frontmatter using a schema
 	schema: ({image}) => z.object({
 		title: z.string(),

@@ -10,8 +10,8 @@ interface Props {
 const {productions} = Astro.props;
 
 function getProductionUrl(production: CollectionEntry<'productions'>) {
-    const [lang, ...slugParts] = production.slug.split('/');
-    return `/${lang}/productions/${slugParts.join('/')}/`;
+    const [lang, ...idParts] = production.id.split('/');
+    return `/${lang}/productions/${idParts.join('/')}/`;
 }
 ---
 <ul class="production-gallery">
