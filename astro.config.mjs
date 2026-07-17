@@ -1,7 +1,8 @@
 import { defineConfig } from 'astro/config';
-import node from '@astrojs/node';
 
 export default defineConfig({
-  output: 'server',
-  adapter: node({ mode: 'standalone' }),
+  // C'est LA ligne vitale pour que le Footer et le BaseHead ne plantent pas
+  site: 'https://aesthetic-production.fr', 
+  
+  output: 'static',
 });
