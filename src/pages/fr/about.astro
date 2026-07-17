@@ -2,22 +2,27 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import {Image} from 'astro:assets';
 import aboutImage from '../../assets/blog-placeholder-about.jpg';
+
+// 1. On prépare les données JSON-LD ici, côté serveur
+const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Hamza Dar",
+    "url": Astro.url.href,
+    "jobTitle": "Réalisateur",
+    "description": "Réalisateur de courts-métrages passionné par la création d'histoires uniques et la capture de moments d'authenticité."
+};
 ---
 
 <PageLayout
         title="À Propos"
         description="Découvrez l'histoire d'Aesthetic Production, notre vision artistique et notre passion pour le cinéma."
 >
-    <script type="application/ld+json" set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Hamza Dar",
-        "url": Astro.url.href,
-        "jobTitle": "Réalisateur",
-        "description": "Réalisateur de courts-métrages passionné par la création d'histoires uniques et la capture de moments d'authenticité."
-    })}/>
+    <!-- 2. On injecte la variable préparée, sans appeler l'objet Astro directement -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 
     <style>
+/* ... le reste de ton code ne change pas ... */
         .about-hero {
             display: flex;
             flex-direction: column;
