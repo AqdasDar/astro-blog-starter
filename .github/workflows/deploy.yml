@@ -33,4 +33,4 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/
         server-dir: /sites/aesthetic-production.fr/
-        protocol: ftp
+        protocol: ftps
