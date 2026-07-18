@@ -31,6 +31,16 @@ const productions = (await getCollection('productions'))
             border-bottom-color: rgb(var(--gray-light));
         }
 
+        h1 {
+            font-size: 3rem;
+            text-align: left;
+        }
+
+        @media (max-width: 720px) {
+            h1 {
+                font-size: 2rem;
+            }
+        }
     </style>
     <title></title>
 </head>
