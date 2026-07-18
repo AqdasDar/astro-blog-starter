@@ -1,21 +1,84 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { Image } from 'astro:assets';
 
 const today = new Date();
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Get all logos dynamically
+const logos = import.meta.glob('../assets/partners/*.{png,jpg,jpeg,svg,webp}', { eager: true });
+const logoImages = Object.values(logos).map((logo: any) => logo.default);
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Aesthetic Production. Tous droits réservés.
+    {logoImages.length > 0 && (
+        <div class="partners-section">
+            <h3 class="partners-title">{t('footer.partners')}</h3>
+            <div class="partners-grid">
+                {logoImages.map((logo, index) => (
+                    <div class="partner-logo-wrapper">
+                        <Image src={logo} alt={`Partner logo ${index + 1}`} class="partner-logo" height={40} />
+                    </div>
+                ))}
+            </div>
+        </div>
+    )}
+    <div class="copyright">
+        &copy; {today.getFullYear()} Aesthetic Production. {t('footer.rights')}
+    </div>
 </footer>
 <style>
 	footer {
-		padding: 2em 1em 6em 1em;
+		padding: 4em 1em 6em 1em;
 		background: linear-gradient(var(--gray-gradient)) no-repeat;
 		color: rgb(var(--gray));
 		text-align: center;
 	}
+    .partners-section {
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--gray-light);
+    }
+    html.dark .partners-section {
+        border-bottom-color: #333;
+    }
+    .partners-title {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: rgb(var(--gray));
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+    .partners-grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+    }
+    .partner-logo-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        filter: grayscale(100%);
+        opacity: 0.55;
+        transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    }
+    .partner-logo-wrapper:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    .partner-logo {
+        max-width: 140px;
+        height: auto;
+        object-fit: contain;
+    }
+    .copyright {
+        font-size: 0.95rem;
+    }
 	.social-links {
 		display: flex;
 		justify-content: center;
