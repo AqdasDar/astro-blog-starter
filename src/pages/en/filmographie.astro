@@ -3,7 +3,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 
 const screenplayDirecting = [
-    { year: 2026, title: 'In progress', role: 'short film' },
+    { year: 2026, title: 'Au fil du temps', role: 'Documentaire (en cours de production)' },
     { year: 2025, title: 'Trèfle de vie', role: 'short film' },
     { year: 2024, title: 'Une chance pour réussir', role: 'short film' },
     { year: 2023, title: 'Albedo', role: 'short film' },
@@ -25,7 +25,7 @@ const productionAssistant = [
 ---
 
 <PageLayout
-        title="Filmography"
+        title="Filmographie"
         description="Discover the filmography of Aesthetic Production."
 >
     <style>
@@ -75,7 +75,7 @@ const productionAssistant = [
     </style>
 
     <div class="filmographie-section">
-        <h2>Screenplay & Directing</h2>
+        <h2>Scénariste - Réalisation</h2>
         <div class="filmographie-grid">
             {screenplayDirecting.map(item => (
                 <div class="year">{item.year}</div>
@@ -85,7 +85,7 @@ const productionAssistant = [
     </div>
 
     <div class="filmographie-section">
-        <h2>Acting</h2>
+        <h2>Comédien</h2>
         <div class="filmographie-grid">
             {acting.map(item => (
                 <div class="year">{item.year}</div>
@@ -98,7 +98,7 @@ const productionAssistant = [
     </div>
 
     <div class="filmographie-section">
-        <h2>Production Assistant</h2>
+        <h2>Assistant de Production</h2>
         <div class="filmographie-grid">
             {productionAssistant.map(item => (
                 <div class="year">{item.year}</div>
