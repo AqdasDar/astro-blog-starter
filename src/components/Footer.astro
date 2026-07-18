@@ -20,14 +20,14 @@ const logoImages = Object.values(logos).map((logo: any) => logo.default);
                     <div class="partners-marquee-group">
                         {logoImages.map((logo, index) => (
                             <div class="partner-logo-wrapper">
-                                <Image src={logo} alt={`Partner logo ${index + 1}`} class="partner-logo" height={40} />
+                                <Image src={logo} alt={`Partner logo ${index + 1}`} class="partner-logo" height={70} />
                             </div>
                         ))}
                     </div>
                     <div class="partners-marquee-group" aria-hidden="true">
                         {logoImages.map((logo, index) => (
                             <div class="partner-logo-wrapper">
-                                <Image src={logo} alt={`Partner logo duplicate ${index + 1}`} class="partner-logo" height={40} />
+                                <Image src={logo} alt={`Partner logo duplicate ${index + 1}`} class="partner-logo" height={70} />
                             </div>
                         ))}
                     </div>
@@ -73,7 +73,7 @@ const logoImages = Object.values(logos).map((logo: any) => logo.default);
     .partners-marquee-track {
         display: flex;
         width: max-content;
-        animation: marquee 25s linear infinite;
+        animation: marquee 30s linear infinite;
     }
     .partners-marquee-track:hover {
         animation-play-state: paused;
@@ -82,8 +82,8 @@ const logoImages = Object.values(logos).map((logo: any) => logo.default);
         display: flex;
         align-items: center;
         justify-content: space-around;
-        gap: 3rem;
-        padding-right: 3rem;
+        gap: 3.5rem;
+        padding-right: 3.5rem;
         flex-shrink: 0;
     }
     @keyframes marquee {
@@ -98,18 +98,16 @@ const logoImages = Object.values(logos).map((logo: any) => logo.default);
         display: flex;
         align-items: center;
         justify-content: center;
-        filter: grayscale(100%);
-        opacity: 0.55;
-        transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+        opacity: 0.9;
+        transition: opacity 0.3s ease, transform 0.3s ease;
     }
     .partner-logo-wrapper:hover {
-        filter: grayscale(0%);
         opacity: 1;
         transform: scale(1.05);
     }
     .partner-logo {
-        max-width: 140px;
-        height: auto;
+        max-width: 180px;
+        height: 70px;
         object-fit: contain;
     }
     .copyright {
