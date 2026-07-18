@@ -73,11 +73,50 @@ import PageLayout from '../../layouts/PageLayout.astro';
             <textarea id="message" name="message" rows="5" required></textarea>
         </div>
         <button type="submit" class="submit-button">Envoyer</button>
+        <div id="form-status" style="margin-top: 1rem; font-weight: bold; display: none;"></div>
     </form>
+
+    <script>
+        const form = document.querySelector('.contact-form') as HTMLFormElement;
+        const statusDiv = document.getElementById('form-status') as HTMLDivElement;
+        const submitBtn = form.querySelector('.submit-button') as HTMLButtonElement;
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Envoi en cours...';
+            statusDiv.style.display = 'none';
+
+            const formData = new FormData(form);
+            try {
+                const response = await fetch('/contact-submit.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const message = await response.text();
+                statusDiv.style.display = 'block';
+                if (response.ok) {
+                    statusDiv.style.color = '#2e7d32'; // vert
+                    statusDiv.textContent = message;
+                    form.reset();
+                } else {
+                    statusDiv.style.color = '#d32f2f'; // rouge
+                    statusDiv.textContent = message || "Une erreur est survenue.";
+                }
+            } catch (err) {
+                statusDiv.style.display = 'block';
+                statusDiv.style.color = '#d32f2f';
+                statusDiv.textContent = "Impossible d'envoyer le message. Veuillez vérifier votre connexion.";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Envoyer';
+            }
+        });
+    </script>
 
     <h3 class="contact-details">Coordonnées</h3>
     <p>
-        <strong>Email:</strong> <a href="mailto:contact@hamzadar.com">contact@hamzadar.com</a>
+        <strong>Email:</strong> <a href="mailto:contact@aesthetic-production.fr">contact@aesthetic-production.fr</a>
     </p>
     <p>
         <strong>Réseaux Sociaux:</strong> Suivez-nous sur <a href="#" target="_blank">Instagram</a>, <a href="#"
