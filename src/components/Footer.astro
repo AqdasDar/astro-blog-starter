@@ -8,7 +8,24 @@ const t = useTranslations(lang);
 
 // Get all logos dynamically
 const logos = import.meta.glob('../assets/partners/*.{png,jpg,jpeg,svg,webp,jfif,PNG,JPG,JPEG,SVG,WEBP,JFIF}', { eager: true });
-const logoImages = Object.values(logos).map((logo: any) => logo.default);
+
+const partnerNames: Record<string, string> = {
+    'agefiph': 'Agefiph : Association pour la gestion des fonds pour l’insertion professionnelle des personnes handicapées',
+    'epide': 'Établissement pour l\'insertion dans l\'emploi (EPIDE)',
+    'fff': 'Fédération Française de Football (FFF)',
+    'inclukathon': 'Inclukathon',
+    'mjc': 'MJC Maison des jeunes et de la culture',
+    'mlne': 'MLNE mission locale nord essonne'
+};
+
+const logoImages = Object.entries(logos).map(([path, logo]: [string, any]) => {
+    const fileName = path.split('/').pop()?.split('.').shift()?.toLowerCase() || '';
+    const altText = partnerNames[fileName] || 'Logo partenaire';
+    return {
+        src: logo.default.src,
+        alt: altText
+    };
+});
 ---
 
 <footer>
@@ -18,16 +35,16 @@ const logoImages = Object.values(logos).map((logo: any) => logo.default);
             <div class="partners-marquee-container">
                 <div class="partners-marquee-track">
                     <div class="partners-marquee-group">
-                        {logoImages.map((logo, index) => (
+                        {logoImages.map((logo) => (
                             <div class="partner-logo-wrapper">
-                                <img src={logo.src} alt={`Partner logo ${index + 1}`} class="partner-logo" loading="lazy" />
+                                <img src={logo.src} alt={logo.alt} class="partner-logo" loading="lazy" />
                             </div>
                         ))}
                     </div>
                     <div class="partners-marquee-group" aria-hidden="true">
-                        {logoImages.map((logo, index) => (
+                        {logoImages.map((logo) => (
                             <div class="partner-logo-wrapper">
-                                <img src={logo.src} alt={`Partner logo duplicate ${index + 1}`} class="partner-logo" loading="lazy" />
+                                <img src={logo.src} alt={logo.alt} class="partner-logo" loading="lazy" />
                             </div>
                         ))}
                     </div>
@@ -41,7 +58,7 @@ const logoImages = Object.values(logos).map((logo: any) => logo.default);
 </footer>
 <style>
 	footer {
-		padding: 4em 1em 6em 1em;
+		padding: 4em 1em 1em 1em;
 		background: linear-gradient(var(--gray-gradient)) no-repeat;
 		color: rgb(var(--gray));
 		text-align: center;
