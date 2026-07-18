@@ -3,7 +3,6 @@ import HeaderLink from './HeaderLink.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import {getLangFromUrl, useTranslations} from '../i18n/utils';
-import {Image} from 'astro:assets';
 import logoImage from '../assets/logo.jpg';
 
 const lang = getLangFromUrl(Astro.url);
@@ -14,7 +13,7 @@ const t = useTranslations(lang);
 	<nav>
 		<div class="brand">
             <a href={`/${lang}/`}>
-                <Image src={logoImage} alt="Aesthetic Production Logo" height={40} loading="eager" fetchpriority="high" />
+                <img src={logoImage.src} alt="Aesthetic Production Logo" height="40" style="height: 40px; width: auto;" />
             </a>
 		</div>
 		<div class="internal-links">
