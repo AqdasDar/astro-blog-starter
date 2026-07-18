@@ -1,5 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import {Image} from 'astro:assets';
+import instagramQr from '../../assets/instagram-qr.png';
 ---
 <PageLayout
         title="Contact"
@@ -51,6 +53,23 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
         .contact-details {
             margin-top: 3rem;
+        }
+
+        .qr-container {
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .qr-code {
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-top: 0.5rem;
+        }
+
+        html.dark .qr-code {
+            border-color: #444;
         }
     </style>
 
@@ -119,8 +138,11 @@ import PageLayout from '../../layouts/PageLayout.astro';
         <strong>Email:</strong> <a href="mailto:contact@aesthetic-production.fr">contact@aesthetic-production.fr</a>
     </p>
     <p>
-        <strong>Réseaux Sociaux:</strong> Suivez-nous sur <a href="#" target="_blank">Instagram</a>, <a href="#"
-                                                                                                       target="_blank">Twitter</a>,
-        et <a href="#" target="_blank">Vimeo</a>.
+        <strong>Réseaux Sociaux:</strong> Suivez-nous sur <a href="https://www.instagram.com/aesthetics_production/" target="_blank">Instagram</a> et <a href="https://www.youtube.com/@aestheticsproductions" target="_blank">YouTube</a>.
     </p>
+
+    <div class="qr-container">
+        <strong>Code QR Instagram:</strong><br/>
+        <Image src={instagramQr} alt="Code QR Instagram" class="qr-code" />
+    </div>
 </PageLayout>
