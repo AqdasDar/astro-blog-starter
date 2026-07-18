@@ -8,10 +8,7 @@ const scenaristeRealisation = [
     { year: 2023, title: 'Albedo', role: 'court métrage' },
 ];
 
-const comedien = [
-    { year: 2025, title: 'Trèfle de vie', role: 'court métrage', details: 'Rôle principal - produit par Aesthetic Production' },
-    { year: 2022, title: 'Echecs & Maths', role: 'court métrage', details: 'Rôle de seikou - produit par IamDESI' },
-];
+
 
 const assistantProduction = [
     { year: 2026, title: 'Vérifions', role: 'Laurence Boccolini' },
@@ -79,19 +76,6 @@ const assistantProduction = [
             {scenaristeRealisation.map(item => (
                 <div class="year">{item.year}</div>
                 <div><strong>{item.title}</strong> - <em>{item.role}</em></div>
-            ))}
-        </div>
-    </div>
-
-    <div class="filmographie-section">
-        <h2>Comédien</h2>
-        <div class="filmographie-grid">
-            {comedien.map(item => (
-                <div class="year">{item.year}</div>
-                <div>
-                    <strong>{item.title}</strong> - <em>{item.role}</em>
-                    {item.details && <div class="details">{item.details}</div>}
-                </div>
             ))}
         </div>
     </div>

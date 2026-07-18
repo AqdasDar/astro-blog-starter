@@ -3,15 +3,10 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 
 const screenplayDirecting = [
-    { year: 2026, title: 'Au fil du temps', role: 'Documentaire (en cours de production)' },
+    { year: 2026, title: 'Au fil du temps', role: 'Documentary (in progress)' },
     { year: 2025, title: 'Trèfle de vie', role: 'short film' },
     { year: 2024, title: 'Une chance pour réussir', role: 'short film' },
     { year: 2023, title: 'Albedo', role: 'short film' },
-];
-
-const acting = [
-    { year: 2025, title: 'Trèfle de vie', role: 'short film', details: 'Lead role - produced by Aesthetic Production' },
-    { year: 2022, title: 'Echecs & Maths', role: 'short film', details: 'Role of Seikou - produced by IamDESI' },
 ];
 
 const productionAssistant = [
@@ -80,19 +75,6 @@ const productionAssistant = [
             {screenplayDirecting.map(item => (
                 <div class="year">{item.year}</div>
                 <div><strong>{item.title}</strong> - <em>{item.role}</em></div>
-            ))}
-        </div>
-    </div>
-
-    <div class="filmographie-section">
-        <h2>Comédien</h2>
-        <div class="filmographie-grid">
-            {acting.map(item => (
-                <div class="year">{item.year}</div>
-                <div>
-                    <strong>{item.title}</strong> - <em>{item.role}</em>
-                    {item.details && <div class="details">{item.details}</div>}
-                </div>
             ))}
         </div>
     </div>
