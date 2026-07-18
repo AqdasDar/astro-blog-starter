@@ -15,7 +15,7 @@ import PageLayout from '../layouts/PageLayout.astro';
         .error-code {
             font-size: 6rem;
             font-weight: bold;
-            color: rgb(var(--accent));
+            color: var(--accent);
             margin: 0;
         }
 
@@ -28,14 +28,14 @@ import PageLayout from '../layouts/PageLayout.astro';
             display: inline-block;
             margin-top: 2rem;
             padding: 0.75rem 1.5rem;
-            border: 1px solid rgb(var(--accent));
+            border: 1px solid var(--accent);
             border-radius: 4px;
             text-decoration: none;
             transition: background-color 0.2s ease, color 0.2s ease;
         }
 
         .home-link:hover {
-            background-color: rgb(var(--accent));
+            background-color: var(--accent);
             color: white;
         }
     </style>
