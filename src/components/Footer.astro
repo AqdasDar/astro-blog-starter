@@ -20,14 +20,14 @@ const logoImages = Object.values(logos).map((logo: any) => logo.default);
                     <div class="partners-marquee-group">
                         {logoImages.map((logo, index) => (
                             <div class="partner-logo-wrapper">
-                                <Image src={logo} alt={`Partner logo ${index + 1}`} class="partner-logo" height={70} />
+                                <img src={logo.src} alt={`Partner logo ${index + 1}`} class="partner-logo" loading="lazy" />
                             </div>
                         ))}
                     </div>
                     <div class="partners-marquee-group" aria-hidden="true">
                         {logoImages.map((logo, index) => (
                             <div class="partner-logo-wrapper">
-                                <Image src={logo} alt={`Partner logo duplicate ${index + 1}`} class="partner-logo" height={70} />
+                                <img src={logo.src} alt={`Partner logo duplicate ${index + 1}`} class="partner-logo" loading="lazy" />
                             </div>
                         ))}
                     </div>
@@ -47,7 +47,6 @@ const logoImages = Object.values(logos).map((logo: any) => logo.default);
 		text-align: center;
 	}
     .partners-section {
-        margin-bottom: 3rem;
         padding-bottom: 3rem;
         border-bottom: 1px solid var(--gray-light);
     }
