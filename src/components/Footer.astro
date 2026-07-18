@@ -7,7 +7,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 // Get all logos dynamically
-const logos = import.meta.glob('../assets/partners/*.{png,jpg,jpeg,svg,webp}', { eager: true });
+const logos = import.meta.glob('../assets/partners/*.{png,jpg,jpeg,svg,webp,jfif,PNG,JPG,JPEG,SVG,WEBP,JFIF}', { eager: true });
 const logoImages = Object.values(logos).map((logo: any) => logo.default);
 ---
 
@@ -15,12 +15,23 @@ const logoImages = Object.values(logos).map((logo: any) => logo.default);
     {logoImages.length > 0 && (
         <div class="partners-section">
             <h3 class="partners-title">{t('footer.partners')}</h3>
-            <div class="partners-grid">
-                {logoImages.map((logo, index) => (
-                    <div class="partner-logo-wrapper">
-                        <Image src={logo} alt={`Partner logo ${index + 1}`} class="partner-logo" height={40} />
+            <div class="partners-marquee-container">
+                <div class="partners-marquee-track">
+                    <div class="partners-marquee-group">
+                        {logoImages.map((logo, index) => (
+                            <div class="partner-logo-wrapper">
+                                <Image src={logo} alt={`Partner logo ${index + 1}`} class="partner-logo" height={40} />
+                            </div>
+                        ))}
                     </div>
-                ))}
+                    <div class="partners-marquee-group" aria-hidden="true">
+                        {logoImages.map((logo, index) => (
+                            <div class="partner-logo-wrapper">
+                                <Image src={logo} alt={`Partner logo duplicate ${index + 1}`} class="partner-logo" height={40} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     )}
@@ -51,12 +62,37 @@ const logoImages = Object.values(logos).map((logo: any) => logo.default);
         margin-bottom: 1.5rem;
         font-weight: 600;
     }
-    .partners-grid {
+    .partners-marquee-container {
+        overflow: hidden;
+        width: 100%;
         display: flex;
-        justify-content: center;
+        position: relative;
+        mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+    }
+    .partners-marquee-track {
+        display: flex;
+        width: max-content;
+        animation: marquee 25s linear infinite;
+    }
+    .partners-marquee-track:hover {
+        animation-play-state: paused;
+    }
+    .partners-marquee-group {
+        display: flex;
         align-items: center;
+        justify-content: space-around;
         gap: 3rem;
-        flex-wrap: wrap;
+        padding-right: 3rem;
+        flex-shrink: 0;
+    }
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
     }
     .partner-logo-wrapper {
         display: flex;
