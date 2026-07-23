@@ -1,6 +1,12 @@
-# Allow all search crawlers
+# Allow all search crawlers (Bingbot, Googlebot, etc.)
 User-agent: *
 Allow: /
 
-# Sitemap URL
+User-agent: Bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+# Sitemap Index
 Sitemap: https://aesthetic-production.fr/sitemap-index.xml

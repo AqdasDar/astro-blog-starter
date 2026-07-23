@@ -10,21 +10,56 @@ interface Props {
 	image?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const siteUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : 'https://aesthetic-production.fr';
+const pathname = Astro.url.pathname;
 
+let frPath = pathname;
+let enPath = pathname;
+if (pathname.startsWith('/en/')) {
+    frPath = pathname.replace('/en/', '/fr/');
+} else if (pathname.startsWith('/fr/')) {
+    enPath = pathname.replace('/fr/', '/en/');
+} else {
+    frPath = '/fr/';
+    enPath = '/en/';
+}
+
+const frUrl = new URL(frPath, siteUrl).href;
+const enUrl = new URL(enPath, siteUrl).href;
+
+const canonicalURL = new URL(pathname, siteUrl).href;
 const { title, description, image } = Astro.props;
+
+const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Aesthetic Production",
+    "url": "https://aesthetic-production.fr",
+    "logo": "https://aesthetic-production.fr/favicon-512x512.png",
+    "sameAs": [
+        "https://www.instagram.com/aesthetics_production/",
+        "https://www.youtube.com/@aestheticsproductions",
+        "https://www.linkedin.com/company/aesthetic-production/"
+    ],
+    "description": description
+};
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<!-- Favicon – Google requires a multiple of 48x48 px with a stable URL -->
+<!-- Favicon – Google and Bing require a multiple of 48x48 px with a stable URL -->
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
 <link rel="icon" href="/favicon.ico" sizes="48x48" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
 <meta name="theme-color" content="#2337ff" />
 <meta name="generator" content={Astro.generator} />
+
+<!-- Language Alternates for Bing & Search Engines -->
+<link rel="alternate" hreflang="fr" href={frUrl} />
+<link rel="alternate" hreflang="en" href={enUrl} />
+<link rel="alternate" hreflang="x-default" href={frUrl} />
 
 <!-- Client Router -->
 <ClientRouter />
@@ -35,6 +70,9 @@ const { title, description, image } = Astro.props;
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
+
+<!-- Structured Data (Bing / Copilot Entity Grounding) -->
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
