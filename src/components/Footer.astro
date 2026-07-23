@@ -1,6 +1,5 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import { Image } from 'astro:assets';
 
 const today = new Date();
 const lang = getLangFromUrl(Astro.url);
@@ -129,17 +128,4 @@ const logoImages = Object.entries(logos).map(([path, logo]: [string, any]) => {
     .copyright {
         font-size: 0.95rem;
     }
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray));
-	}
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
-	}
 </style>

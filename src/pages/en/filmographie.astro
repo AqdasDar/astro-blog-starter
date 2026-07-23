@@ -1,5 +1,4 @@
 ---
-// src/pages/en/cv.astro
 import PageLayout from '../../layouts/PageLayout.astro';
 
 const screenplayDirecting = [
@@ -15,12 +14,10 @@ const productionAssistant = [
     { year: 2025, title: 'Match Aller', role: 'Inès Banzet-Benhagouga' },
     { year: 2025, title: 'Chair adolescent', role: 'Pablo Cabel' },
 ];
-
-
 ---
 
 <PageLayout
-        title="Filmographie"
+        title="Filmography"
         description="Discover the filmography of Aesthetic Production."
 >
     <style>
@@ -43,28 +40,6 @@ const productionAssistant = [
             font-weight: bold;
             color: rgb(var(--gray));
         }
-
-        .filmographie-grid .details {
-            font-size: 0.9rem;
-            color: rgb(var(--gray));
-            margin-top: 0.2rem;
-        }
-
-        .download-button {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            border: 1px solid var(--accent);
-            background-color: transparent;
-            color: var(--accent);
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-
-        .download-button:hover {
-            background-color: var(--accent);
-            color: white;
-        }
     </style>
 
     <div class="filmographie-section">
@@ -77,7 +52,7 @@ const productionAssistant = [
     </div>
 
     <div class="filmographie-section">
-        <h2>Assistant de Production</h2>
+        <h2>Production Assistant</h2>
         <div class="filmographie-grid">
             {productionAssistant.map(item => (
                 <div class="year">{item.year}</div>

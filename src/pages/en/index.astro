@@ -13,6 +13,7 @@ const productions = (await getCollection('productions'))
         (a, b) => b.data.releaseDate.valueOf() - a.data.releaseDate.valueOf()
     );
 ---
+<!doctype html>
 <html lang="en">
 <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
@@ -42,7 +43,6 @@ const productions = (await getCollection('productions'))
             }
         }
     </style>
-    <title></title>
 </head>
 <body>
 <Header/>

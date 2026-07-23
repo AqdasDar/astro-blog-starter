@@ -1,0 +1,6 @@
+# Allow all search crawlers
+User-agent: *
+Allow: /
+
+# Sitemap URL
+Sitemap: https://aesthetic-production.fr/sitemap-index.xml

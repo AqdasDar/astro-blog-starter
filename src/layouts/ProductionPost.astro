@@ -15,20 +15,22 @@ const lang = getLangFromUrl(Astro.url);
 const isLocalVideo = videoUrl && (videoUrl.startsWith('/') || videoUrl.endsWith('.mp4') || videoUrl.endsWith('.MP4'));
 ---
 
+<!doctype html>
 <html lang={lang}>
 <head>
-    <BaseHead title={title} description={description} image={heroImage}/>
+    <BaseHead title={title} description={description} image={typeof heroImage === 'string' ? heroImage : heroImage?.src}/>
     <script type="application/ld+json" set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Movie",
         "name": title,
         "description": description,
         "datePublished": releaseDate.toISOString(),
+        "inLanguage": lang,
         "director": {
             "@type": "Person",
             "name": "Hamza Dar"
         },
-        ...(heroImage && {"image": new URL(heroImage, Astro.site).href}),
+        ...(heroImage && {"image": new URL(typeof heroImage === 'string' ? heroImage : heroImage.src, Astro.site).href}),
         ...(videoUrl && {"embedUrl": videoUrl})
     })}/>
     <style>
@@ -98,7 +100,6 @@ const isLocalVideo = videoUrl && (videoUrl.startsWith('/') || videoUrl.endsWith(
             font-style: italic;
         }
     </style>
-    <title></title>
 </head>
 
 <body>
@@ -119,7 +120,7 @@ const isLocalVideo = videoUrl && (videoUrl.startsWith('/') || videoUrl.endsWith(
                         <iframe
                                 src={videoUrl}
                                 title="Embedded video"
-                                frameborder="0"
+                                style="border: 0;"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen
                         ></iframe>
