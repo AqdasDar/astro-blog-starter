@@ -8,7 +8,7 @@ const schemaData = {
     "@type": "Person",
     "name": "Hamza Dar",
     "url": Astro.url.href,
-    "jobTitle": "Réalisateur",
+    "jobTitle": "Producteur & Réalisateur",
     "description": "Réalisateur de courts-métrages passionné par la création d'histoires uniques et la capture de moments d'authenticité.",
     "inLanguage": "fr"
 };
@@ -37,8 +37,9 @@ const schemaData = {
         .about-image {
             width: 100%;
             height: auto;
-            max-height: 450px;
-            object-fit: cover;
+            max-height: 550px;
+            object-fit: contain;
+            object-position: top center;
             border-radius: 16px;
             box-shadow: var(--box-shadow);
         }
@@ -256,7 +257,7 @@ const schemaData = {
         <figure class="about-image-wrapper">
             <Image src={aboutImage} alt="Hamza Dar sur la montée des marches à Cannes" class="about-image" loading="eager" fetchpriority="high" />
             <figcaption class="image-caption">
-                Hamza Dar lors de la montée des marches à Cannes, célébrant la nomination du court-métrage <em>Albédo</em>.
+                Hamza Dar, producteur d'Aesthetic Production, lors de la montée des marches à Cannes, célébrant la nomination du court-métrage <em>Albédo</em>.
             </figcaption>
         </figure>
         <div class="intro-text">
