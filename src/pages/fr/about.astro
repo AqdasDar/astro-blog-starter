@@ -1,7 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import {Image} from 'astro:assets';
-import aboutImage from '../../assets/blog-placeholder-about.jpg';
+import aboutImage from '../../assets/HamzaDar.jpg';
 
 const schemaData = {
     "@context": "https://schema.org",
@@ -29,6 +29,11 @@ const schemaData = {
             margin-bottom: 3rem;
         }
         
+        .about-image-wrapper {
+            margin: 0;
+            width: 100%;
+        }
+
         .about-image {
             width: 100%;
             height: auto;
@@ -36,6 +41,15 @@ const schemaData = {
             object-fit: cover;
             border-radius: 16px;
             box-shadow: var(--box-shadow);
+        }
+
+        .image-caption {
+            margin-top: 0.75rem;
+            font-size: 0.92rem;
+            font-style: italic;
+            color: rgb(var(--gray-dark));
+            text-align: center;
+            opacity: 0.9;
         }
 
         .intro-text {
@@ -239,7 +253,12 @@ const schemaData = {
     </style>
 
     <div class="about-hero">
-        <Image src={aboutImage} alt="Portrait du réalisateur Hamza Dar" class="about-image" loading="eager" fetchpriority="high" />
+        <figure class="about-image-wrapper">
+            <Image src={aboutImage} alt="Hamza Dar sur la montée des marches à Cannes" class="about-image" loading="eager" fetchpriority="high" />
+            <figcaption class="image-caption">
+                Hamza Dar lors de la montée des marches à Cannes, célébrant la nomination du court-métrage <em>Albédo</em>.
+            </figcaption>
+        </figure>
         <div class="intro-text">
             <p class="intro-highlight">
                 Chaque projet représente pour notre équipe une nouvelle opportunité de transformer vos idées en récits visuels marquants.
