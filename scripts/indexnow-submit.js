@@ -6,7 +6,7 @@
  */
 
 const SITE_URL = 'https://aesthetic-production.fr';
-const INDEXNOW_KEY = '4a87b9c201e54911abf83c2d4e8f192b';
+const INDEXNOW_KEY = 'a6def2ee924d4e3f9fae487f89b2b9bc';
 const SITEMAP_URL = `${SITE_URL}/sitemap-0.xml`;
 
 async function fetchSitemapUrls() {
