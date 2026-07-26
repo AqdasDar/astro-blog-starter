@@ -6,5 +6,8 @@ export default defineConfig({
   site: 'https://aesthetic-production.fr', 
   
   output: 'static',
-  integrations: [sitemap()],
+  integrations: [sitemap({
+    lastmod: new Date(),
+    filter: (page) => page !== 'https://aesthetic-production.fr/',
+  })],
 });

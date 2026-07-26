@@ -1,3 +1,6 @@
 RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirect root to French homepage (permanent 301)
+RewriteRule ^$ /fr/ [L,R=301]
