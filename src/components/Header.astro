@@ -68,20 +68,19 @@ const t = useTranslations(lang);
         height: 60px;
         width: auto;
         border-radius: 0;
-        display: block;
     }
 
     /* Theme-aware logo switching */
-    .logo-light {
+    .brand .logo-light {
         display: block;
     }
-    .logo-dark {
+    .brand .logo-dark {
         display: none;
     }
-    :global(html.dark) .logo-light {
+    :global(html.dark) .brand .logo-light {
         display: none;
     }
-    :global(html.dark) .logo-dark {
+    :global(html.dark) .brand .logo-dark {
         display: block;
     }
 
