@@ -3,7 +3,8 @@ import HeaderLink from './HeaderLink.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import {getLangFromUrl, useTranslations} from '../i18n/utils';
-import logoImage from '../assets/logo.jpg';
+import logoLight from '../assets/Aesthetic-Production-Logo-White-Background.jpg';
+import logoDark from '../assets/Aesthetic-Production-Logo-Navy-Background.jpg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -13,7 +14,8 @@ const t = useTranslations(lang);
 	<nav>
 		<div class="brand">
             <a href={`/${lang}/`}>
-                <img src={logoImage.src} alt="Aesthetic Production Logo" height="60" style="height: 60px; width: auto;" />
+                <img src={logoLight.src} alt="Aesthetic Production Logo" class="logo-light" height="60" />
+                <img src={logoDark.src} alt="Aesthetic Production Logo" class="logo-dark" height="60" />
             </a>
 		</div>
 		<div class="internal-links">
@@ -66,6 +68,20 @@ const t = useTranslations(lang);
         height: 60px;
         width: auto;
         border-radius: 0;
+        display: block;
+    }
+
+    /* Theme-aware logo switching */
+    .logo-light {
+        display: block;
+    }
+    .logo-dark {
+        display: none;
+    }
+    :global(html.dark) .logo-light {
+        display: none;
+    }
+    :global(html.dark) .logo-dark {
         display: block;
     }
 
