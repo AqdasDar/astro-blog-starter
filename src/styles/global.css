@@ -18,14 +18,14 @@
 }
 
 html.dark {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
+	--accent: #4a6cf7;
+	--accent-dark: #2337ff;
 	--black: 242, 242, 242; /* Inverted from gray-light */
-	--gray: 160, 170, 180; 
-	--gray-light: 34, 41, 57; /* Inverted from gray-dark */
+	--gray: 160, 175, 200; 
+	--gray-light: 27, 42, 74; /* Navy-tinted dark */
 	--gray-dark: 229, 233, 240; /* Inverted from gray-light */
-	--gray-gradient: rgba(var(--gray-light), 50%), #18181b;
-	background-color: #18181b;
+	--gray-gradient: rgba(var(--gray-light), 50%), #0f1a30;
+	background-color: #0f1a30;
 }
 
 @font-face {
