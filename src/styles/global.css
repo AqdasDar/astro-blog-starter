@@ -22,10 +22,10 @@ html.dark {
 	--accent-dark: #2337ff;
 	--black: 242, 242, 242; /* Inverted from gray-light */
 	--gray: 160, 175, 200; 
-	--gray-light: 27, 42, 74; /* Navy-tinted dark */
+	--gray-light: 27, 42, 74; /* Navy logo background #1b2a4a */
 	--gray-dark: 229, 233, 240; /* Inverted from gray-light */
-	--gray-gradient: rgba(var(--gray-light), 50%), #0f1a30;
-	background-color: #0f1a30;
+	--gray-gradient: #16223a, #1b2a4a;
+	background-color: #1b2a4a;
 }
 
 @font-face {
