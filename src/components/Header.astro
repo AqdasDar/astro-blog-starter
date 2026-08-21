@@ -11,11 +11,11 @@ const t = useTranslations(lang);
 ---
 
 <header>
-	<nav>
+	<nav aria-label={lang === 'fr' ? 'Navigation principale' : 'Main navigation'}>
 		<div class="brand">
             <a href={`/${lang}/`}>
-                <img src={logoLight.src} alt="Aesthetic Production Logo" class="logo-light" height="90" />
-                <img src={logoDark.src} alt="Aesthetic Production Logo" class="logo-dark" height="90" />
+                <img src={logoLight.src} alt="Aesthetic Production Logo" class="logo-light" width="90" height="90" />
+                <img src={logoDark.src} alt="Aesthetic Production Logo" class="logo-dark" width="90" height="90" />
             </a>
 		</div>
 		<div class="internal-links">

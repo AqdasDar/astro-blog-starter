@@ -114,12 +114,14 @@ const isLocalVideo = videoUrl && (videoUrl.startsWith('/') || videoUrl.endsWith(
                         controls
                         preload="metadata"
                         style="width: 100%; border-radius: 12px; box-shadow: var(--box-shadow); aspect-ratio: 16/9; background-color: black;"
-                    ></video>
+                    >
+                        {lang === 'fr' ? 'Votre navigateur ne supporte pas la lecture vidéo.' : 'Your browser does not support video playback.'}
+                    </video>
                 ) : (
                     <div class="video-responsive">
                         <iframe
                                 src={videoUrl}
-                                title="Embedded video"
+                        title={title}
                                 style="border: 0;"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen
@@ -128,7 +130,7 @@ const isLocalVideo = videoUrl && (videoUrl.startsWith('/') || videoUrl.endsWith(
                 )
             ) : (
                 heroImage &&
-                <Image src={heroImage} widths={[400, 800, 1200]} sizes="100vw" alt={`Affiche pour ${title}`} loading="eager" fetchpriority="high" />
+                <Image src={heroImage} widths={[400, 800, 1200]} sizes="100vw" alt={lang === 'fr' ? `Affiche pour ${title}` : `Poster for ${title}`} loading="eager" fetchpriority="high" />
             )}
         </div>
         <div class="prose">
@@ -138,7 +140,7 @@ const isLocalVideo = videoUrl && (videoUrl.startsWith('/') || videoUrl.endsWith(
                     {
                         updatedDate && (
                                     <div class="last-updated-on">
-                                        Mis à jour le
+                                        {lang === 'fr' ? 'Mis à jour le' : 'Last updated on'}
                                         <FormattedDate date={updatedDate}/>
                                     </div>
                         )

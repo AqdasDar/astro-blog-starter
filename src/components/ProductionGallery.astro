@@ -2,12 +2,14 @@
 import type {CollectionEntry} from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
 import {Image} from 'astro:assets';
+import { getLangFromUrl } from '../i18n/utils';
 
 interface Props {
     productions: CollectionEntry<'productions'>[];
 }
 
 const {productions} = Astro.props;
+const lang = getLangFromUrl(Astro.url);
 
 function getProductionUrl(production: CollectionEntry<'productions'>) {
     const [lang, ...idParts] = production.id.split('/');
@@ -28,7 +30,7 @@ function getProductionUrl(production: CollectionEntry<'productions'>) {
                                         src={production.data.heroImage}
                                         widths={[200, 400, 800]}
                                         sizes="(max-width: 720px) 100vw, 50vw"
-                                        alt={`Affiche de la production ${production.data.title}`}
+                                        alt={lang === 'fr' ? `Affiche de la production ${production.data.title}` : `Poster for ${production.data.title}`}
                                         loading={index < 4 ? "eager" : "lazy"}
                                         fetchpriority={index < 4 ? "high" : undefined}
                                 />

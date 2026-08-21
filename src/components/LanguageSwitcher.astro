@@ -6,7 +6,7 @@ const currentLocale = path.split('/')[1] || 'fr';
 const otherLocale = currentLocale === 'fr' ? 'en' : 'fr';
 const otherPath = path.replace(`/${currentLocale}/`, `/${otherLocale}/`);
 ---
-<a href={otherPath} class="language-switcher">
+<a href={otherPath} class="language-switcher" aria-label={otherLocale === 'en' ? 'Switch to English' : 'Passer en français'}>
     {otherLocale.toUpperCase()}
 </a>
 <style>

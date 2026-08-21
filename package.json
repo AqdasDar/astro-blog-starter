@@ -29,7 +29,8 @@
     "start": "node ./dist/server/entry.mjs",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "indexnow": "node scripts/indexnow-submit.js"
 },
 	"type": "module",
 	"allowScripts": {

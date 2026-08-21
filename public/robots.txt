@@ -8,5 +8,17 @@ Allow: /
 User-agent: msnbot
 Allow: /
 
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
 # Sitemap Index
 Sitemap: https://aesthetic-production.fr/sitemap-index.xml
