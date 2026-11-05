@@ -3,8 +3,7 @@ import HeaderLink from './HeaderLink.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import {getLangFromUrl, useTranslations} from '../i18n/utils';
-import logoLight from '../assets/Aesthetic-Production-Logo-White-Background.jpg';
-import logoDark from '../assets/Aesthetic-Production-Logo-Navy-Background.jpg';
+import logoSvg from '../assets/Aesthetic Production Logo White.svg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -14,8 +13,8 @@ const t = useTranslations(lang);
 	<nav aria-label={lang === 'fr' ? 'Navigation principale' : 'Main navigation'}>
 		<div class="brand">
             <a href={`/${lang}/`}>
-                <img src={logoLight.src} alt="Aesthetic Production Logo" class="logo-light" width="90" height="90" />
-                <img src={logoDark.src} alt="Aesthetic Production Logo" class="logo-dark" width="90" height="90" />
+                <img src={logoLight.src} alt="Aesthetic Production Logo" class="logo-light" height="60" />
+                <img src={logoDark.src} alt="Aesthetic Production Logo" class="logo-dark" height="60" />
             </a>
 		</div>
 		<div class="internal-links">
@@ -48,7 +47,7 @@ const t = useTranslations(lang);
 		align-items: center;
 		justify-content: space-between;
         gap: 1em;
-        min-height: 70px;
+        min-height: 85px;
 	}
 	.brand {
         flex: 0 1 auto;
@@ -65,23 +64,19 @@ const t = useTranslations(lang);
 	}
 
     .brand img {
-        height: 90px;
+        height: 60px;
         width: auto;
+        max-height: 90px;
         border-radius: 0;
+        display: block;
+        transition: filter 0.2s ease-in-out;
+        /* En mode clair (fond blanc), adaptation du SVG blanc vers le bleu marine #16223a */
+        filter: brightness(0) saturate(100%) invert(11%) sepia(34%) saturate(1478%) hue-rotate(185deg) brightness(94%) contrast(94%);
     }
 
-    /* Theme-aware logo switching */
-    .brand .logo-light {
-        display: block;
-    }
-    .brand .logo-dark {
-        display: none;
-    }
-    :global(html.dark) .brand .logo-light {
-        display: none;
-    }
-    :global(html.dark) .brand .logo-dark {
-        display: block;
+    :global(html.dark) .brand img {
+        /* En mode sombre (fond #16223a), le SVG reste blanc pur */
+        filter: none;
     }
 
     .internal-links {
@@ -119,5 +114,8 @@ const t = useTranslations(lang);
 			flex-wrap: wrap;
 			gap: 0.5em 1em;
 		}
+        .brand img {
+            height: 75px;
+        }
 	}
 </style>
