@@ -13,8 +13,7 @@ const t = useTranslations(lang);
 	<nav aria-label={lang === 'fr' ? 'Navigation principale' : 'Main navigation'}>
 		<div class="brand">
             <a href={`/${lang}/`}>
-                <img src={logoLight.src} alt="Aesthetic Production Logo" class="logo-light" height="60" />
-                <img src={logoDark.src} alt="Aesthetic Production Logo" class="logo-dark" height="60" />
+                <img src={logoSvg.src} alt="Aesthetic Production Logo" class="logo" width="76" height="85" />
             </a>
 		</div>
 		<div class="internal-links">
@@ -64,7 +63,7 @@ const t = useTranslations(lang);
 	}
 
     .brand img {
-        height: 60px;
+        height: 85px;
         width: auto;
         max-height: 90px;
         border-radius: 0;
